@@ -153,6 +153,99 @@ body {
   gap: 2rem;
 }
 
+/* Venue Bento Grid */
+.venue-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 250px;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.venue-card {
+  position: relative;
+  background: var(--zinc-900);
+  border: 4px solid var(--white);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s steps(2);
+}
+
+.venue-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 var(--magenta);
+  z-index: 20;
+}
+
+.venue-card:hover .venue-img {
+  transform: scale(1.05);
+  opacity: 0.6;
+}
+
+.venue-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  transition: all 0.4s ease;
+  filter: grayscale(100%) contrast(120%);
+}
+
+.venue-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  z-index: 10;
+  background: linear-gradient(to top, var(--void) 20%, transparent);
+}
+
+.venue-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 0;
+}
+
+.venue-city {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--neon-green);
+  font-weight: 900;
+}
+
+/* Spans */
+.span-2x2 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.span-2x1 {
+  grid-column: span 2;
+}
+
+@media (max-width: 1024px) {
+  .venue-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .venue-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 300px;
+  }
+
+  .span-2x2,
+  .span-2x1 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
 /* Navigation */
 .nav-main {
   position: fixed;
@@ -222,6 +315,17 @@ body {
   pointer-events: none;
 }
 
+.hero-gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25vh;
+  background: linear-gradient(to top, var(--void) 0%, transparent 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
 .hero-content {
   position: relative;
   z-index: 10;
@@ -236,7 +340,7 @@ body {
   line-height: 0.9;
   letter-spacing: -0.05em;
   margin-bottom: 2rem;
-  animation: twitch 0.3s infinite;
+  /* animation: twitch 0.3s infinite; - Removed for JS wiggle */
 }
 
 .tilted-wrapper {
@@ -310,9 +414,7 @@ body {
   animation: motionBlur 3s infinite ease-in-out;
 }
 
-.twitch-text {
-  animation: twitch 0.2s steps(2) infinite;
-}
+/* JS initialization handles the wiggle effect for .twitch-text */
 
 /* Responsive */
 @media (max-width: 768px) {
