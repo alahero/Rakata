@@ -30,3 +30,4 @@ yarn-error.log*
 
 # Project specific
 # 04-Rakata.pdf included per user request to "upload the project"
+.vercel
