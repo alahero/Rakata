@@ -61,12 +61,55 @@
                     </div>
                 </div>
 
-                <button class="mobile-menu-btn btn-book-rakata">
+                <button class="mobile-menu-btn btn-book-rakata" id="mobileMenuBtn">
                     <i data-lucide="menu"></i>
                 </button>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Nav Panel -->
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    <div class="mobile-nav-panel" id="mobilePanel">
+        <div class="mobile-nav-header">
+            <img src="img/Rakata_Logo.svg" alt="Rakata Logo" style="height: 40px;">
+            <button class="btn-close-menu" id="closeMenuBtn">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+
+        <div class="mobile-nav-links">
+            <a href="#venues" class="mobile-nav-link">
+                <span class="link-number">01</span>
+                <span class="link-text">Venues</span>
+            </a>
+            <a href="#experience" class="mobile-nav-link">
+                <span class="link-number">02</span>
+                <span class="link-text">Experience</span>
+            </a>
+            <a href="#events" class="mobile-nav-link">
+                <span class="link-number">03</span>
+                <span class="link-text">Events</span>
+            </a>
+            <a href="#music" class="mobile-nav-link">
+                <span class="link-number">04</span>
+                <span class="link-text">Music</span>
+            </a>
+            <a href="#location" class="mobile-nav-link">
+                <span class="link-number">05</span>
+                <span class="link-text">Location</span>
+            </a>
+        </div>
+
+        <div class="mobile-nav-footer">
+            <button class="btn-book-rakata" style="width: 100%;">BOOK NOW</button>
+            <div class="mobile-socials">
+                <a href="#"><i data-lucide="instagram"></i></a>
+                <a href="#"><i data-lucide="facebook"></i></a>
+                <a href="#"><i data-lucide="twitter"></i></a>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <header class="hero">
@@ -573,6 +616,36 @@
             }
         }
 
+        function initMobileMenu() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const closeBtn = document.getElementById('closeMenuBtn');
+            const overlay = document.getElementById('mobileOverlay');
+            const panel = document.getElementById('mobilePanel');
+            const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+            function toggleMenu(isOpen) {
+                if (isOpen) {
+                    panel.classList.add('active');
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    panel.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            if (menuBtn && closeBtn && overlay) {
+                menuBtn.addEventListener('click', () => toggleMenu(true));
+                closeBtn.addEventListener('click', () => toggleMenu(false));
+                overlay.addEventListener('click', () => toggleMenu(false));
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => toggleMenu(false));
+                });
+            }
+        }
+
         window.addEventListener('resize', handleResize);
         window.addEventListener('load', () => {
             loadHeroVideos();
@@ -581,6 +654,7 @@
             handleResize();
             initEventsSlider();
             initLocationSearch();
+            initMobileMenu();
             // Initialize the controlled wiggle on the title with lower intensity
             initWiggle('.twitch-text', { freq: 0.75, amp: 1.5, fps: 10 });
         });

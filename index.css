@@ -785,3 +785,127 @@ body {
   background: var(--magenta);
   color: var(--white);
 }
+
+/* Mobile Nav Panel Styles */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 900;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.mobile-nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85%;
+  max-width: 400px;
+  height: 100vh;
+  background: var(--void);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  border-left: 4px solid var(--white);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mobile-nav-panel.active {
+  transform: translateX(0);
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.btn-close-menu {
+  background: var(--magenta);
+  border: 2px solid var(--white);
+  color: var(--white);
+  padding: 0.5rem;
+  line-height: 0;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--neon-green);
+  transition: all 0.2s ease;
+}
+
+.btn-close-menu:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--neon-green);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.link-number {
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: var(--neon-green);
+}
+
+.link-text {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.mobile-nav-link:hover .link-text {
+  color: var(--magenta);
+  transform: skewX(-5deg);
+}
+
+.mobile-nav-footer {
+  margin-top: 2rem;
+}
+
+.mobile-socials {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.mobile-socials a {
+  color: var(--white);
+  transition: color 0.2s ease;
+}
+
+.mobile-socials a:hover {
+  color: var(--magenta);
+}
+
+.mobile-socials i {
+  width: 24px;
+  height: 24px;
+}
