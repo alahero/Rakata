@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rakata | No Rules, No Filters</title>
-    <link rel="stylesheet" href="index.css?v=1.1">
+    <link rel="stylesheet" href="index.css?v=1.2">
     <style>
         @media (max-width: 640px) {
 
@@ -23,6 +23,39 @@
 <body>
     <div class="bg-grain"></div>
 
+    <!-- Mobile Navigation Panel -->
+    <div class="mobile-nav-overlay" id="mobileOverlay" style="display: none;"></div>
+    <div class="mobile-nav-panel" id="mobilePanel" style="display: none;">
+        <div class="mobile-nav-header" style="justify-content: flex-end;">
+            <button class="btn-close-menu" id="closeMenuBtn">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+
+        <div class="mobile-nav-links">
+            <a href="#venues" class="mobile-nav-link">
+                <span class="link-text" data-i18n="nav_venues">Venues</span>
+            </a>
+            <a href="#experience" class="mobile-nav-link">
+                <span class="link-text" data-i18n="nav_experience">Experience</span>
+            </a>
+            <a href="#events" class="mobile-nav-link">
+                <span class="link-text" data-i18n="nav_events">Events</span>
+            </a>
+            <a href="#music" class="mobile-nav-link">
+                <span class="link-text" data-i18n="nav_music">Music</span>
+            </a>
+            <a href="#location" class="mobile-nav-link">
+                <span class="link-text" data-i18n="nav_location">Location</span>
+            </a>
+        </div>
+
+        <div class="mobile-nav-footer">
+            <a href="https://mandalatickets.com/" class="btn-book-rakata"
+                style="width: 100%; text-align: center; display: block;" data-i18n="book_now">BOOK NOW</a>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav-main" id="navbar">
         <div class="section-container nav-inner">
@@ -37,27 +70,27 @@
 
             <!-- Central Menu (Desktop) -->
             <div class="nav-links">
-                <a href="#venues" class="nav-link">Venues</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#events" class="nav-link">Events</a>
-                <a href="#music" class="nav-link">Music</a>
-                <a href="#location" class="nav-link">Location</a>
+                <a href="#venues" class="nav-link" data-i18n="nav_venues">Venues</a>
+                <a href="#experience" class="nav-link" data-i18n="nav_experience">Experience</a>
+                <a href="#events" class="nav-link" data-i18n="nav_events">Events</a>
+                <a href="#music" class="nav-link" data-i18n="nav_music">Music</a>
+                <a href="#location" class="nav-link" data-i18n="nav_location">Location</a>
             </div>
 
             <!-- Right Actions -->
             <div style="display: flex; align-items: center; gap: 1rem;">
-                <button class="btn-book-rakata is-nav">BOOK NOW</button>
+                <a href="https://mandalatickets.com/" class="btn-book-rakata is-nav" data-i18n="book_now">BOOK NOW</a>
 
                 <!-- Language Selector -->
                 <div class="lang-selector-container">
                     <button class="btn-lang-rakata" id="langBtn">
-                        ENG <i data-lucide="chevron-down"></i>
+                        <span id="currentLang">ESP</span> <i data-lucide="chevron-down"></i>
                     </button>
                     <div class="lang-dropdown" id="langDropdown">
-                        <a href="#" class="lang-option">ENG</a>
-                        <a href="#" class="lang-option">ESP</a>
-                        <a href="#" class="lang-option">POR</a>
-                        <a href="#" class="lang-option">FRA</a>
+                        <a href="javascript:void(0)" class="lang-option" data-lang="ENG">ENG</a>
+                        <a href="javascript:void(0)" class="lang-option" data-lang="ESP">ESP</a>
+                        <a href="javascript:void(0)" class="lang-option" data-lang="PR">PR</a>
+                        <a href="javascript:void(0)" class="lang-option" data-lang="FR">FR</a>
                     </div>
                 </div>
 
@@ -68,72 +101,30 @@
         </div>
     </nav>
 
-    <!-- Mobile Nav Panel -->
-    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
-    <div class="mobile-nav-panel" id="mobilePanel">
-        <div class="mobile-nav-header">
-            <img src="img/Rakata_Logo.svg" alt="Rakata Logo" style="height: 40px;">
-            <button class="btn-close-menu" id="closeMenuBtn">
-                <i data-lucide="x"></i>
-            </button>
-        </div>
-
-        <div class="mobile-nav-links">
-            <a href="#venues" class="mobile-nav-link">
-                <span class="link-number">01</span>
-                <span class="link-text">Venues</span>
-            </a>
-            <a href="#experience" class="mobile-nav-link">
-                <span class="link-number">02</span>
-                <span class="link-text">Experience</span>
-            </a>
-            <a href="#events" class="mobile-nav-link">
-                <span class="link-number">03</span>
-                <span class="link-text">Events</span>
-            </a>
-            <a href="#music" class="mobile-nav-link">
-                <span class="link-number">04</span>
-                <span class="link-text">Music</span>
-            </a>
-            <a href="#location" class="mobile-nav-link">
-                <span class="link-number">05</span>
-                <span class="link-text">Location</span>
-            </a>
-        </div>
-
-        <div class="mobile-nav-footer">
-            <button class="btn-book-rakata" style="width: 100%;">BOOK NOW</button>
-            <div class="mobile-socials">
-                <a href="#"><i data-lucide="instagram"></i></a>
-                <a href="#"><i data-lucide="facebook"></i></a>
-                <a href="#"><i data-lucide="twitter"></i></a>
-            </div>
-        </div>
-    </div>
-
     <!-- Hero Section -->
     <header class="hero">
         <!-- Desktop Video -->
         <video class="hero-video-bg desktop-video" muted loop playsinline preload="metadata">
-            <source src="https://mandalatickets.com/assets/uploads/video/cancun/rakata.mp4#t=0.1" type="video/mp4">
+            <source src="https://mandalatickets.com/assets/uploads/video/cancun/rakata.mp4" type="video/mp4">
         </video>
         <!-- Mobile Video -->
         <video class="hero-video-bg mobile-video" muted loop playsinline preload="metadata" style="display: none;">
-            <source src="https://mandalatickets.com/assets/videos/cancun/n_rakata.mp4#t=0.1" type="video/mp4">
+            <source src="https://mandalatickets.com/assets/videos/cancun/n_rakata.mp4" type="video/mp4">
         </video>
         <div class="hero-gradient-overlay"></div>
 
         <div class="hero-content">
-            <h1 class="hero-title twitch-text" style="color: var(--white); text-shadow: 4px 4px 0 var(--magenta);">
+            <h1 class="hero-title twitch-text" style="color: var(--white); text-shadow: 4px 4px 0 var(--magenta);"
+                data-i18n="hero_title">
                 NO RULES,<br>NO FILTERS
             </h1>
 
             <div class="tilted-wrapper">
-                <span class="tilted-subtitle">La Capital del Perreo</span>
+                <span class="tilted-subtitle" data-i18n="hero_subtitle">La Capital del Perreo</span>
             </div>
 
             <div style="margin-top: 3rem;">
-                <button class="btn-book-rakata">BOOK YOUR TABLE</button>
+                <a href="https://mandalatickets.com/" class="btn-book-rakata" data-i18n="book_table">BOOK YOUR TABLE</a>
             </div>
         </div>
     </header>
@@ -142,54 +133,54 @@
     <main style="background: var(--void); position: relative; z-index: 10;">
         <section id="venues" class="section-container" style="padding: 10rem 1.5rem 5rem 1.5rem;">
             <div class="tilted-wrapper" style="background-color: var(--neon-green); transform: rotate(1deg);">
-                <h2 class="text-rebel" style="color: var(--void); margin: 0;">Our Venues</h2>
+                <h2 class="text-rebel" style="color: var(--void); margin: 0;" data-i18n="our_venues">Our Venues</h2>
             </div>
 
             <div class="venue-grid">
                 <!-- Cancun -->
-                <div class="venue-card span-3">
+                <a href="https://www.instagram.com/rakatacancun/" class="venue-card span-3">
                     <img src="img/venue_cancun.png" alt="Rakata Cancun" class="venue-img">
                     <div class="venue-info">
-                        <span class="venue-city">Flagship</span>
+                        <span class="venue-city" data-i18n="venue_flagship">Flagship</span>
                         <h3 class="venue-name">Cancun</h3>
                     </div>
-                </div>
+                </a>
 
                 <!-- Vallarta -->
-                <div class="venue-card span-1">
+                <a href="https://www.instagram.com/rakatavallarta/" class="venue-card span-1">
                     <img src="img/venue_vallarta.png" alt="Rakata Vallarta" class="venue-img">
                     <div class="venue-info">
-                        <span class="venue-city">Coastal</span>
+                        <span class="venue-city" data-i18n="venue_coastal">Coastal</span>
                         <h3 class="venue-name">Vallarta</h3>
                     </div>
-                </div>
+                </a>
 
-                <!-- GDL Andares -->
-                <div class="venue-card span-1">
-                    <img src="img/venue_andares.png" alt="Rakata GDL Andares" class="venue-img">
+                <!-- GDL Acueducto -->
+                <a href="https://www.instagram.com/rakata.gdl/?hl=en" class="venue-card span-1">
+                    <img src="img/venue_andares.png" alt="Rakata GDL Acueducto" class="venue-img">
                     <div class="venue-info">
-                        <span class="venue-city">GDL/Luxury</span>
+                        <span class="venue-city" data-i18n="venue_luxury">GDL/Luxury</span>
                         <h3 class="venue-name">Andares</h3>
                     </div>
-                </div>
+                </a>
 
                 <!-- GDL Chapu -->
-                <div class="venue-card span-1">
+                <a href="https://www.instagram.com/rakatachapu/?hl=en" class="venue-card span-1">
                     <img src="img/venue_chapu.png" alt="Rakata GDL Chapu" class="venue-img">
                     <div class="venue-info">
-                        <span class="venue-city">GDL/Urban</span>
+                        <span class="venue-city" data-i18n="venue_urban">GDL/Urban</span>
                         <h3 class="venue-name">Chapu</h3>
                     </div>
-                </div>
+                </a>
 
                 <!-- Queretaro -->
-                <div class="venue-card span-1">
+                <a href="https://www.instagram.com/rakataqueretaro/?hl=en" class="venue-card span-1">
                     <img src="img/venue_queretaro.png" alt="Rakata QRO" class="venue-img">
                     <div class="venue-info">
-                        <span class="venue-city">Queretaro</span>
+                        <span class="venue-city" data-i18n="venue_qro">Queretaro</span>
                         <h3 class="venue-name">QRO</h3>
                     </div>
-                </div>
+                </a>
 
                 <!-- Coming Soon -->
                 <div class="venue-card span-1"
@@ -197,8 +188,8 @@
                     <img src="img/thin-graffiti-arrow-by-Vexels.png" alt="Coming Soon" class="venue-img"
                         style="width: 60%; height: auto; opacity: 0.8; filter: brightness(0) invert(1); transform: scaleX(-1); margin-bottom: 2rem;">
                     <div class="venue-info">
-                        <span class="venue-city">New Spots</span>
-                        <h3 class="venue-name">COMING<br>SOON</h3>
+                        <span class="venue-city" data-i18n="venue_new_spots">New Spots</span>
+                        <h3 class="venue-name" data-i18n="coming_soon">COMING<br>SOON</h3>
                     </div>
                 </div>
             </div>
@@ -208,30 +199,33 @@
         <section id="experience" class="section-container" style="padding: 5rem 1.5rem 10rem 1.5rem;">
             <div style="text-align: right;">
                 <div class="tilted-wrapper" style="background-color: var(--magenta); transform: rotate(-1.5deg);">
-                    <h2 class="text-rebel" style="color: var(--white); margin: 0;">The Experience</h2>
+                    <h2 class="text-rebel" style="color: var(--white); margin: 0;" data-i18n="the_experience">The
+                        Experience</h2>
                 </div>
             </div>
 
             <div class="grid-urban" style="margin-top: 4rem;">
                 <div class="experience-card">
                     <div class="experience-emoji">😈</div>
-                    <h3 class="text-rebel">PURE MISCHIEF</h3>
-                    <p>No rules. No filters. Just the raw energy of the night.</p>
+                    <h3 class="text-rebel" data-i18n="experience_pure_mischief">PURE MISCHIEF</h3>
+                    <p data-i18n="experience_mischief_desc">No rules. No filters. Just the raw energy of the night.</p>
                 </div>
                 <div class="experience-card">
                     <div class="experience-emoji">🔥</div>
-                    <h3 class="text-rebel">FIRE MUSIC</h3>
-                    <p>The hottest reggaetón selection on the planet. Elite DJs only.</p>
+                    <h3 class="text-rebel" data-i18n="experience_fire_music">FIRE MUSIC</h3>
+                    <p data-i18n="experience_fire_music_desc">The hottest reggaetón selection on the planet. Elite DJs
+                        only.</p>
                 </div>
                 <div class="experience-card">
                     <div class="experience-emoji">🍑</div>
-                    <h3 class="text-rebel">THE BEST PERREO</h3>
-                    <p>This is the capital. Get down to the floor or get out of the way.</p>
+                    <h3 class="text-rebel" data-i18n="experience_best_perreo">THE BEST PERREO</h3>
+                    <p data-i18n="experience_best_perreo_desc">This is the capital. Get down to the floor or get out of
+                        the way.</p>
                 </div>
                 <div class="experience-card">
                     <div class="experience-emoji">😎</div>
-                    <h3 class="text-rebel">VIBE CHECK</h3>
-                    <p>Exclusive energy for the most intense crowd in Mexico.</p>
+                    <h3 class="text-rebel" data-i18n="experience_vibe_check">VIBE CHECK</h3>
+                    <p data-i18n="experience_vibe_check_desc">Exclusive energy for the most intense crowd in Mexico.</p>
                 </div>
             </div>
         </section>
@@ -241,22 +235,14 @@
             <div class="section-container">
                 <div class="tilted-wrapper"
                     style="background-color: var(--void); border: 2px solid var(--magenta); transform: rotate(-1deg); box-shadow: 4px 4px 0 var(--magenta);">
-                    <h2 class="text-rebel" style="color: var(--white); margin: 0;">UPCOMING EVENTS</h2>
+                    <h2 class="text-rebel" style="color: var(--white); margin: 0;" data-i18n="upcoming_events">UPCOMING
+                        EVENTS</h2>
                 </div>
             </div>
 
             <div class="events-slider">
                 <div class="events-track" id="eventsTrack">
-                    <div class="event-card"><img src="events/EVENTO_SABADO_001_1080X1080.jpg" class="event-img"></div>
-                    <div class="event-card"><img src="events/EVENTO_SABADO_002_1080X1080.jpg" class="event-img"></div>
-                    <div class="event-card"><img src="events/EVENTO_SABADO_003_1080X1080 (1).jpg" class="event-img">
-                    </div>
-                    <div class="event-card"><img src="events/EVENTO_SABADO_004_1080x1080.jpg" class="event-img"></div>
-                    <div class="event-card"><img src="events/EVENTO_VIERNES_001_1080X1080 (1).jpg" class="event-img">
-                    </div>
-                    <div class="event-card"><img src="events/EVENTO_VIERNES_002_1080X1080 (2).jpg" class="event-img">
-                    </div>
-                    <div class="event-card"><img src="events/EVENTO_VIERNES_003_1080X1080.jpg" class="event-img"></div>
+                    <!-- Events loaded via API -->
                 </div>
             </div>
         </section>
@@ -264,7 +250,8 @@
         <!-- Music / Playlist Section -->
         <section id="music" class="section-container" style="padding: 5rem 1.5rem 10rem 1.5rem;">
             <div class="tilted-wrapper" style="background-color: var(--neon-green); transform: rotate(1.5deg);">
-                <h2 class="text-rebel" style="color: var(--void); margin: 0;">FEEL THE BEAT</h2>
+                <h2 class="text-rebel" style="color: var(--void); margin: 0;" data-i18n="feel_the_beat">FEEL THE BEAT
+                </h2>
             </div>
 
             <div style="margin-top: 4rem; max-width: 900px; margin-left: auto; margin-right: auto;">
@@ -353,7 +340,8 @@
         <section id="location" class="section-container" style="padding: 5rem 1.5rem 10rem 1.5rem;">
             <div style="text-align: center;">
                 <div class="tilted-wrapper" style="background-color: var(--magenta); transform: rotate(-1deg);">
-                    <h2 class="text-rebel" style="color: var(--white); margin: 0;">Where the party at 🔥</h2>
+                    <h2 class="text-rebel" style="color: var(--white); margin: 0;" data-i18n="location_title">Where the
+                        party at 🔥</h2>
                 </div>
             </div>
 
@@ -386,6 +374,59 @@
             </div>
         </section>
     </main>
+
+    <footer class="footer-main">
+        <div class="section-container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-col brand-col">
+                    <div class="footer-logo-container">
+                        <img src="img/Rakata_Logo.svg" alt="Rakata Logo" class="footer-logo">
+                    </div>
+                    <p class="footer-tagline" data-i18n="footer_tagline">La Capital del Perreo. Sin reglas. Sin filtros.
+                    </p>
+                    <div class="footer-contact-info">
+                        <span class="footer-contact-item">reservations@mandalaticket.com</span>
+                        <span class="footer-contact-item">+52 56 4980 2193</span>
+                    </div>
+                </div>
+
+                <!-- Venues Column -->
+                <div class="footer-col">
+                    <h4 data-i18n="nav_venues">Venues</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.instagram.com/rakatacancun/" target="_blank">Cancun</a></li>
+                        <li><a href="https://www.instagram.com/rakatavallarta/" target="_blank">Vallarta</a></li>
+                        <li><a href="https://www.instagram.com/rakata.gdl/?hl=en" target="_blank">Andares</a></li>
+                        <li><a href="https://www.instagram.com/rakatachapu/?hl=en" target="_blank">Chapu</a></li>
+                        <li><a href="https://www.instagram.com/rakataqueretaro/?hl=en" target="_blank">Queretaro</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links Removed -->
+
+                <!-- Mandala Tickets -->
+                <div class="footer-col">
+                    <h4 data-i18n="footer_mandalatickets">MANDALATICKETS</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://mandalatickets.com/info/privacidad/es" data-i18n="footer_privacy">Privacy
+                                Policy</a></li>
+                        <li><a href="https://mandalatickets.com/info/terminos/es" data-i18n="footer_terms">Terms &
+                                Conditions</a></li>
+                        <li><a href="https://mandalatickets.com/info/faqs/es" data-i18n="footer_faqs">Faqs</a></li>
+                        <li><a href="https://mandalatickets.com/info/contactanos/es" data-i18n="footer_contact">Contact
+                                Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-i18n="footer_copy">&copy; 2026 Rakata. Todos los derechos reservados.</p>
+                <img src="img/Rakata_Compressed_Logo.svg" alt="Rakata Icon" style="height: 30px; opacity: 0.5;">
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Initialize Lucide icons
@@ -475,7 +516,239 @@
                     langDropdown.classList.remove('show');
                 }
             });
+
+            // Handle Language Switch
+            const langOptions = document.querySelectorAll('.lang-option');
+            const translations = {
+                ENG: {
+                    nav_venues: "Venues",
+                    nav_experience: "Experience",
+                    nav_events: "Events",
+                    nav_music: "Music",
+                    nav_location: "Location",
+                    book_now: "BOOK NOW",
+                    book_table: "BOOK YOUR TABLE",
+                    hero_title: "NO RULES,<br>NO FILTERS",
+                    hero_subtitle: "La Capital del Perreo",
+                    our_venues: "Our Venues",
+                    venue_flagship: "Flagship",
+                    venue_coastal: "Coastal",
+                    venue_luxury: "GDL/Luxury",
+                    venue_urban: "GDL/Urban",
+                    venue_qro: "Queretaro",
+                    venue_new_spots: "New Spots",
+                    coming_soon: "COMING<br>SOON",
+                    the_experience: "The Experience",
+                    experience_pure_mischief: "PURE MISCHIEF",
+                    experience_mischief_desc: "No rules. No filters. Just the raw energy of the night.",
+                    experience_fire_music: "FIRE MUSIC",
+                    experience_fire_music_desc: "The hottest reggaetón selection on the planet. Elite DJs only.",
+                    experience_best_perreo: "THE BEST PERREO",
+                    experience_best_perreo_desc: "This is the capital. Get down to the floor or get out of the way.",
+                    experience_vibe_check: "VIBE CHECK",
+                    experience_vibe_check_desc: "Exclusive energy for the most intense crowd in Mexico.",
+                    upcoming_events: "UPCOMING EVENTS",
+                    feel_the_beat: "FEEL THE BEAT",
+                    location_title: "Where the party at 🔥",
+                    footer_tagline: "The Capital of Perreo. No rules. No filters.",
+                    footer_quick_links: "Quick Links",
+                    footer_mandalatickets: "MANDALATICKETS",
+                    footer_schedule: "Schedule & Dresscode",
+                    footer_gallery: "Photo Gallery",
+                    footer_privacy: "Privacy Policy",
+                    footer_terms: "Terms & Conditions",
+                    footer_faqs: "Faqs",
+                    footer_contact: "Contact Us",
+                    footer_copy: "&copy; 2026 Rakata. All rights reserved."
+                },
+                ESP: {
+                    nav_venues: "Venues",
+                    nav_experience: "Experiencia",
+                    nav_events: "Eventos",
+                    nav_music: "Música",
+                    nav_location: "Ubicación",
+                    book_now: "RESERVA YA",
+                    book_table: "RESERVA TU MESA",
+                    hero_title: "SIN REGLAS,<br>SIN FILTROS",
+                    hero_subtitle: "La Capital del Perreo",
+                    our_venues: "Nuestros Venues",
+                    venue_flagship: "Flagship",
+                    venue_coastal: "Costa",
+                    venue_luxury: "GDL/Lujo",
+                    venue_urban: "GDL/Urbano",
+                    venue_qro: "Querétaro",
+                    venue_new_spots: "Nuevos Spots",
+                    coming_soon: "PRÓXIMA-<br>MENTE",
+                    the_experience: "La Experiencia",
+                    experience_pure_mischief: "PURA MALICIA",
+                    experience_mischief_desc: "Sin reglas. Sin filtros. Solo la energía pura de la noche.",
+                    experience_fire_music: "MÚSICA QUE ARDE",
+                    experience_fire_music_desc: "La selección de reggaetón más hot del planeta. Solo DJs de élite.",
+                    experience_best_perreo: "EL MEJOR PERREO",
+                    experience_best_perreo_desc: "Esta es la capital. Al suelo o fuera del camino.",
+                    experience_vibe_check: "VIBE CHECK",
+                    experience_vibe_check_desc: "Energía exclusiva para el público más intenso de México.",
+                    upcoming_events: "PRÓXIMOS EVENTOS",
+                    feel_the_beat: "SIENTE EL BEAT",
+                    location_title: "Donde está la fiesta 🔥",
+                    footer_tagline: "La Capital del Perreo. Sin reglas. Sin filtros.",
+                    footer_quick_links: "Links Rápidos",
+                    footer_mandalatickets: "MANDALATICKETS",
+                    footer_schedule: "Horarios y Dresscode",
+                    footer_gallery: "Galería de Fotos",
+                    footer_privacy: "Aviso de Privacidad",
+                    footer_terms: "Términos y Condiciones",
+                    footer_faqs: "Faqs",
+                    footer_contact: "Contáctanos",
+                    footer_copy: "&copy; 2026 Rakata. Todos los derechos reservados."
+                },
+                PR: {
+                    nav_venues: "Venues",
+                    nav_experience: "Experiência",
+                    nav_events: "Eventos",
+                    nav_music: "Música",
+                    nav_location: "Localização",
+                    book_now: "RESERVE AGORA",
+                    book_table: "RESERVE SUA MESA",
+                    hero_title: "SEM REGRAS,<br>SEM FILTROS",
+                    hero_subtitle: "La Capital del Perreo",
+                    our_venues: "Nossos Venues",
+                    venue_flagship: "Flagship",
+                    venue_coastal: "Costa",
+                    venue_luxury: "GDL/Luxo",
+                    venue_urban: "GDL/Urbano",
+                    venue_qro: "Querétaro",
+                    venue_new_spots: "Novos Spots",
+                    coming_soon: "EM BREVE",
+                    the_experience: "A Experiência",
+                    experience_pure_mischief: "PURA MALÍCIA",
+                    experience_mischief_desc: "Sem regras. Sem filtros. Apenas a energia pura da noite.",
+                    experience_fire_music: "MÚSICA DE FOGO",
+                    experience_fire_music_desc: "A seleção de reggaetón mais quente do planeta. Apenas DJs de elite.",
+                    experience_best_perreo: "O MELHOR PERREO",
+                    experience_best_perreo_desc: "Esta é a capital. Desça até o chão ou saia do caminho.",
+                    experience_vibe_check: "VIBE CHECK",
+                    experience_vibe_check_desc: "Energía exclusiva para o público mais intenso do México.",
+                    upcoming_events: "PRÓXIMOS EVENTOS",
+                    feel_the_beat: "SINTA O BEAT",
+                    location_title: "Onde está a festa 🔥",
+                    footer_tagline: "A Capital do Perreo. Sem regras. Sem filtros.",
+                    footer_quick_links: "Links Rápidos",
+                    footer_mandalatickets: "MANDALATICKETS",
+                    footer_schedule: "Horários e Dresscode",
+                    footer_gallery: "Galeria de Fotos",
+                    footer_privacy: "Política de Privacidade",
+                    footer_terms: "Termos e Condições",
+                    footer_faqs: "Faqs",
+                    footer_contact: "Contate-nos",
+                    footer_copy: "&copy; 2026 Rakata. Todos os direitos reservados."
+                },
+                FR: {
+                    nav_venues: "Venues",
+                    nav_experience: "Expérience",
+                    nav_events: "Événements",
+                    nav_music: "Musique",
+                    nav_location: "Emplacement",
+                    book_now: "RÉSERVEZ MAINTENANT",
+                    book_table: "RÉSERVEZ VOTRE TABLE",
+                    hero_title: "PAS DE RÈGLES,<br>PAS DE FILTRE",
+                    hero_subtitle: "La Capital del Perreo",
+                    our_venues: "Nos Venues",
+                    venue_flagship: "Flagship",
+                    venue_coastal: "Littoral",
+                    venue_luxury: "GDL/Luxe",
+                    venue_urban: "GDL/Urbain",
+                    venue_qro: "Quartier",
+                    venue_new_spots: "Nouveaux Spots",
+                    coming_soon: "PROCHAINEMENT",
+                    the_experience: "L'Expérience",
+                    experience_pure_mischief: "PURE MALICE",
+                    experience_mischief_desc: "Pas de règles. Pas de filtres. Juste l'énergie brute de la nuit.",
+                    experience_fire_music: "MUSIQUE DE FEU",
+                    experience_fire_music_desc: "La sélection de reggaetón la plus chaude de la planète. DJs d'élite uniquement.",
+                    experience_best_perreo: "LE MEILLEUR PERREO",
+                    experience_best_perreo_desc: "C'est la capitale. Descendez au sol ou écartez-vous.",
+                    experience_vibe_check: "VIBE CHECK",
+                    experience_vibe_check_desc: "Énergie exclusive pour la foule la plus intense du Mexique.",
+                    upcoming_events: "ÉVÉNEMENTS À VENIR",
+                    feel_the_beat: "RESSENTEZ LE RYTHME",
+                    location_title: "Où est la fête 🔥",
+                    footer_tagline: "La Capitale du Perreo. Pas de règles. Pas de filtres.",
+                    footer_quick_links: "Liens Rapides",
+                    footer_mandalatickets: "MANDALATICKETS",
+                    footer_schedule: "Horaires et Dresscode",
+                    footer_gallery: "Galerie Photos",
+                    footer_privacy: "Politique de Confidentialité",
+                    footer_terms: "Termes et Conditions",
+                    footer_faqs: "Faqs",
+                    footer_contact: "Contactez-nous",
+                    footer_copy: "&copy; 2026 Rakata. Tous droits réservés."
+                }
+            };
+
+            function updateLanguage(lang) {
+                const currentLangSpan = document.getElementById('currentLang');
+                if (currentLangSpan) currentLangSpan.textContent = lang;
+
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+            }
+
+            langOptions.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    const lang = opt.getAttribute('data-lang');
+                    updateLanguage(lang);
+                    langDropdown.classList.remove('show');
+                });
+            });
         }
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobilePanel = document.getElementById('mobilePanel');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-panel .mobile-nav-link');
+
+        function toggleMobileMenu(isOpen) {
+            if (isOpen) {
+                mobilePanel.style.display = 'flex';
+                mobileOverlay.style.display = 'block';
+                // Trigger reflow for animation
+                mobilePanel.offsetHeight;
+                mobileOverlay.offsetHeight;
+                mobilePanel.classList.add('active');
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobilePanel.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    if (!mobilePanel.classList.contains('active')) {
+                        mobilePanel.style.display = 'none';
+                        mobileOverlay.style.display = 'none';
+                    }
+                }, 500); // Wait for transition
+            }
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => toggleMobileMenu(true));
+        }
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', () => toggleMobileMenu(false));
+        }
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', () => toggleMobileMenu(false));
+        }
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => toggleMobileMenu(false));
+        });
 
         async function initEventsSlider() {
             const track = document.getElementById('eventsTrack');
@@ -616,36 +889,6 @@
             }
         }
 
-        function initMobileMenu() {
-            const menuBtn = document.getElementById('mobileMenuBtn');
-            const closeBtn = document.getElementById('closeMenuBtn');
-            const overlay = document.getElementById('mobileOverlay');
-            const panel = document.getElementById('mobilePanel');
-            const navLinks = document.querySelectorAll('.mobile-nav-link');
-
-            function toggleMenu(isOpen) {
-                if (isOpen) {
-                    panel.classList.add('active');
-                    overlay.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    panel.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            }
-
-            if (menuBtn && closeBtn && overlay) {
-                menuBtn.addEventListener('click', () => toggleMenu(true));
-                closeBtn.addEventListener('click', () => toggleMenu(false));
-                overlay.addEventListener('click', () => toggleMenu(false));
-
-                navLinks.forEach(link => {
-                    link.addEventListener('click', () => toggleMenu(false));
-                });
-            }
-        }
-
         window.addEventListener('resize', handleResize);
         window.addEventListener('load', () => {
             loadHeroVideos();
@@ -654,7 +897,7 @@
             handleResize();
             initEventsSlider();
             initLocationSearch();
-            initMobileMenu();
+            updateLanguage('ESP');
             // Initialize the controlled wiggle on the title with lower intensity
             initWiggle('.twitch-text', { freq: 0.75, amp: 1.5, fps: 10 });
         });
