@@ -5,7 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rakata | No Rules, No Filters</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css?v=1.1">
+    <style>
+        @media (max-width: 640px) {
+
+            .venue-grid>div:nth-child(5),
+            .venue-grid>div:nth-child(6) {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+        }
+    </style>
     <!-- Lucide Icons for Hamburger -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -18,15 +28,17 @@
         <div class="section-container nav-inner">
             <!-- Logo Variants -->
             <div class="nav-logo">
-                <img src="img/Rakata_Logo.svg" alt="Rakata Logo" class="desktop-logo" style="height: 50px;">
-                <img src="img/Rakata_Compressed_Logo.svg" alt="Rakata Logo" class="mobile-logo"
-                    style="height: 40px; display: none;">
+                <a href="#" style="display: block; line-height: 0;">
+                    <img src="img/Rakata_Logo.svg" alt="Rakata Logo" class="desktop-logo" style="height: 50px;">
+                    <img src="img/Rakata_Compressed_Logo.svg" alt="Rakata Logo" class="mobile-logo"
+                        style="height: 40px; display: none;">
+                </a>
             </div>
 
             <!-- Central Menu (Desktop) -->
             <div class="nav-links">
-                <a href="#experience" class="nav-link">Experience</a>
                 <a href="#venues" class="nav-link">Venues</a>
+                <a href="#experience" class="nav-link">Experience</a>
                 <a href="#events" class="nav-link">Events</a>
                 <a href="#music" class="nav-link">Music</a>
                 <a href="#location" class="nav-link">Location</a>
@@ -127,12 +139,23 @@
                     </div>
                 </div>
 
-                <!-- Playa del Carmen -->
-                <div class="venue-card span-2">
-                    <img src="img/venue_playa.png" alt="Rakata Playa del Carmen" class="venue-img">
+                <!-- Queretaro -->
+                <div class="venue-card span-1">
+                    <img src="img/venue_queretaro.png" alt="Rakata QRO" class="venue-img">
                     <div class="venue-info">
-                        <span class="venue-city">Riviera Maya</span>
-                        <h3 class="venue-name">Playa del Carmen</h3>
+                        <span class="venue-city">Queretaro</span>
+                        <h3 class="venue-name">QRO</h3>
+                    </div>
+                </div>
+
+                <!-- Coming Soon -->
+                <div class="venue-card span-1"
+                    style="display: flex; align-items: center; justify-content: center; background: var(--zinc-900); border-color: var(--magenta);">
+                    <img src="img/thin-graffiti-arrow-by-Vexels.png" alt="Coming Soon" class="venue-img"
+                        style="width: 60%; height: auto; opacity: 0.8; filter: brightness(0) invert(1); transform: scaleX(-1); margin-bottom: 2rem;">
+                    <div class="venue-info">
+                        <span class="venue-city">New Spots</span>
+                        <h3 class="venue-name">COMING<br>SOON</h3>
                     </div>
                 </div>
             </div>
@@ -261,15 +284,62 @@
                     </div>
                 </div>
 
-                <!-- Playa del Carmen -->
-                <div class="venue-card span-2 neon-border-magenta neon-card-glow">
-                    <img src="img/venue_playa.png" alt="Rakata Playa del Carmen" class="venue-img"
+                <!-- Queretaro -->
+                <div class="venue-card span-1 neon-border-magenta neon-card-glow">
+                    <img src="img/venue_queretaro.png" alt="Rakata QRO" class="venue-img"
                         style="opacity: 0.6; filter: none;">
                     <div class="venue-info">
-                        <span class="venue-city">Riviera Maya</span>
-                        <h3 class="venue-name neon-text-magenta">Playa del Carmen</h3>
+                        <span class="venue-city">Queretaro</span>
+                        <h3 class="venue-name neon-text-magenta">QRO</h3>
                     </div>
                 </div>
+
+                <!-- Coming Soon -->
+                <div class="venue-card span-1 neon-border-green neon-card-glow"
+                    style="display: flex; align-items: center; justify-content: center; background: var(--void);">
+                    <img src="img/thin-graffiti-arrow-by-Vexels.png" alt="Coming Soon" class="venue-img"
+                        style="width: 60%; height: auto; opacity: 0.6; filter: drop-shadow(0 0 5px var(--magenta)) brightness(1.2); transform: scaleX(-1); margin-bottom: 2rem;">
+                    <div class="venue-info">
+                        <span class="venue-city neon-text-magenta">New Spots</span>
+                        <h3 class="venue-name neon-text-green">COMING<br>SOON</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Location Section -->
+        <section id="location" class="section-container" style="padding: 5rem 1.5rem 10rem 1.5rem;">
+            <div style="text-align: center;">
+                <div class="tilted-wrapper" style="background-color: var(--magenta); transform: rotate(-1deg);">
+                    <h2 class="text-rebel" style="color: var(--white); margin: 0;">Where the party at 🔥</h2>
+                </div>
+            </div>
+
+            <!-- Search / Filter Container -->
+            <div class="location-search-container"
+                style="margin-top: 3rem; position: relative; max-width: 400px; margin-left: auto; margin-right: auto;">
+                <div class="search-bar-wrapper brutalist-border-green"
+                    style="background: var(--void); display: flex; align-items: center; padding: 0.5rem 1rem;">
+                    <i data-lucide="search"
+                        style="color: var(--neon-green); margin-right: 0.5rem; width: 20px; height: 20px;"></i>
+                    <input type="text" id="venueSearch" value="CANCUN" readonly
+                        style="background: transparent; border: none; color: var(--white); font-family: var(--font-main); font-weight: 800; text-transform: uppercase; width: 100%; outline: none; cursor: pointer;">
+                </div>
+
+                <!-- Dropdown Menu -->
+                <div id="venueDropdown" class="venue-dropdown brutalist-border-magenta">
+                    <div class="dropdown-item">CANCUN</div>
+                    <div class="dropdown-item">PUERTO VALLARTA</div>
+                    <div class="dropdown-item">ACUEDUCTO-GDL</div>
+                    <div class="dropdown-item">CHAPU-GDL</div>
+                    <div class="dropdown-item">QUERETARO</div>
+                </div>
+            </div>
+
+            <!-- Map Embed -->
+            <div
+                style="margin-top: 4rem; border: 4px solid var(--white); box-shadow: 15px 15px 0 var(--magenta); line-height: 0;">
+                <iframe id="venueMap" src="https://snazzymaps.com/embed/777321" width="100%" height="600px"
+                    style="border:none;"></iframe>
             </div>
         </section>
     </main>
@@ -364,44 +434,143 @@
             });
         }
 
-        // Events Slider Logic
-        function initEventsSlider() {
+        async function initEventsSlider() {
             const track = document.getElementById('eventsTrack');
-            const cards = document.querySelectorAll('.event-card');
-            if (!track || cards.length === 0) return;
+            if (!track) return;
 
-            let currentIndex = 0;
+            try {
+                // Fetch dynamic events from our secure API proxy
+                const response = await fetch('/api/events');
+                if (!response.ok) throw new Error('Failed to fetch events');
+                const events = await response.json();
 
-            function updateSlider() {
+                if (events && events.length > 0) {
+                    // Clear hardcoded cards
+                    track.innerHTML = '';
+
+                    // Generate dynamic cards
+                    events.forEach(event => {
+                        const card = document.createElement('div');
+                        card.className = 'event-card';
+
+                        // We use the event gallery image (1000x1000 standard)
+                        const img = document.createElement('img');
+                        img.src = event.imagen;
+                        img.className = 'event-img';
+                        img.alt = event.nombre;
+
+                        // Link to the event page
+                        const link = document.createElement('a');
+                        link.href = event.url;
+                        link.target = '_blank';
+                        link.appendChild(img);
+
+                        card.appendChild(link);
+                        track.appendChild(card);
+                    });
+                }
+            } catch (error) {
+                console.error("Error loading events:", error);
+                // Keep original hardcoded fallback if API fails
+            }
+
+            // Triple the set of cards to ensure no gaps on left or right
+            const originalContent = track.innerHTML;
+            track.innerHTML = originalContent + originalContent + originalContent;
+
+            const cards = track.querySelectorAll('.event-card');
+            const totalCardsCount = cards.length;
+            const originalCount = totalCardsCount / 3;
+
+            if (originalCount === 0) return;
+
+            // Start at the first card of the middle set
+            let currentIndex = originalCount;
+            let moveInterval;
+
+            function updateSlider(isInstant = false) {
                 const cardWidth = cards[0].offsetWidth;
                 const gap = 32; // 2rem gap
                 const containerWidth = track.parentElement.offsetWidth;
 
+                if (isInstant) {
+                    track.style.transition = 'none';
+                } else {
+                    track.style.transition = 'transform 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6)';
+                }
+
                 // Calculate position to center the current card
                 const offset = (containerWidth / 2) - (cardWidth / 2) - (currentIndex * (cardWidth + gap));
-
                 track.style.transform = `translateX(${offset}px)`;
 
-                // Update active states
+                // Update active scales
                 cards.forEach((card, index) => {
-                    if (index === currentIndex) {
-                        card.classList.add('is-active');
-                    } else {
-                        card.classList.remove('is-active');
+                    card.classList.toggle('is-active', index === currentIndex);
+                });
+            }
+
+            function cycle() {
+                currentIndex++;
+                updateSlider();
+
+                // Reset to middle set when reaching the third set
+                if (currentIndex === originalCount * 2) {
+                    setTimeout(() => {
+                        currentIndex = originalCount;
+                        updateSlider(true);
+                    }, 600);
+                }
+            }
+
+            // Start the cycle centered
+            updateSlider(true);
+            moveInterval = setInterval(cycle, 3000);
+
+            // Responsive handling
+            window.addEventListener('resize', () => updateSlider(true));
+        }
+
+        function initLocationSearch() {
+            const venueSearch = document.getElementById('venueSearch');
+            const venueDropdown = document.getElementById('venueDropdown');
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            const venueMap = document.getElementById('venueMap');
+
+            // Map mapping
+            const mapLinks = {
+                "CANCUN": "https://snazzymaps.com/embed/777321",
+                "PUERTO VALLARTA": "https://snazzymaps.com/embed/777322",
+                "ACUEDUCTO-GDL": "https://snazzymaps.com/embed/777325",
+                "CHAPU-GDL": "https://snazzymaps.com/embed/777324",
+                "QUERETARO": "https://snazzymaps.com/embed/777326"
+            };
+
+            if (venueSearch && venueDropdown) {
+                venueSearch.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isVisible = venueDropdown.style.display === 'block';
+                    venueDropdown.style.display = isVisible ? 'none' : 'block';
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!venueSearch.contains(e.target) && !venueDropdown.contains(e.target)) {
+                        venueDropdown.style.display = 'none';
                     }
                 });
 
-                currentIndex = (currentIndex + 1) % cards.length;
+                dropdownItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        const selection = item.textContent;
+                        venueSearch.value = selection;
+                        venueDropdown.style.display = 'none';
+
+                        // Actualizar mapa
+                        if (mapLinks[selection]) {
+                            venueMap.src = mapLinks[selection];
+                        }
+                    });
+                });
             }
-
-            // Initial call
-            updateSlider();
-
-            // Auto-advance every 3 seconds
-            setInterval(updateSlider, 3000);
-
-            // Handle resize
-            window.addEventListener('resize', updateSlider);
         }
 
         window.addEventListener('resize', handleResize);
@@ -411,6 +580,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             handleResize();
             initEventsSlider();
+            initLocationSearch();
             // Initialize the controlled wiggle on the title with lower intensity
             initWiggle('.twitch-text', { freq: 0.75, amp: 1.5, fps: 10 });
         });

@@ -288,40 +288,30 @@ body {
   }
 
   .venue-grid {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 180px;
-    /* More compact for mobile */
     gap: 1rem;
+    margin-top: 3rem;
+    /* Refresh sync */
   }
 
-  /* Cancun: 2x2 */
-  .venue-grid .venue-card:nth-child(1) {
-    grid-column: span 2;
-    grid-row: span 2;
+  /* Force all cards to be 1x1 by default in mobile grid */
+  .venue-grid>.venue-card {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
   }
 
-  /* Vallarta: 2x1 */
-  .venue-grid .venue-card:nth-child(2) {
-    grid-column: span 2;
-    grid-row: span 1;
+  /* Cancun: Full Width (First Card) */
+  .venue-grid>.venue-card:nth-child(1) {
+    grid-column: span 2 !important;
+    grid-row: span 2 !important;
   }
 
-  /* Andares: 1x1 */
-  .venue-grid .venue-card:nth-child(3) {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  /* Chapu: 1x1 */
-  .venue-grid .venue-card:nth-child(4) {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  /* Playa del Carmen: 2x1 */
-  .venue-grid .venue-card:nth-child(5) {
-    grid-column: span 2;
-    grid-row: span 1;
+  /* Vallarta: Full Width (Second Card) */
+  .venue-grid>.venue-card:nth-child(2) {
+    grid-column: span 2 !important;
+    grid-row: span 1 !important;
   }
 
   .venue-name {
@@ -759,5 +749,39 @@ body {
 /* Selection */
 ::selection {
   background-color: var(--magenta);
+  color: var(--white);
+}
+
+/* Location Section Dropdown */
+.venue-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--void);
+  z-index: 100;
+  margin-top: 0.5rem;
+  box-shadow: 8px 8px 0 var(--neon-green);
+}
+
+.dropdown-item {
+  padding: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s steps(2);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background: var(--magenta);
   color: var(--white);
 }
