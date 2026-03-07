@@ -1,4 +1,4 @@
-# Mandala Tickets API — Documentación completa
+# Mandala Tickets API — Documentación completa 
 
 > API REST para consultar venues, eventos, contenido multilenguaje, multimedia y metadatos SEO del ecosistema Mandala Group.
 
