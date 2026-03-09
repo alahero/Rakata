@@ -68,19 +68,25 @@
                             <label class="venue-form-label" for="reservaNombre">Nombre</label>
                             <input type="text" id="reservaNombre" class="venue-form-input"
                                 placeholder="Tu nombre completo" required>
+                            <span id="errNombre" class="form-error-msg"
+                                style="display: none; color: var(--magenta); font-size: 0.85rem; margin-top: 0.5rem;"></span>
                         </div>
                         <div class="venue-form-group">
                             <label class="venue-form-label" for="reservaPersonas">Número de personas</label>
                             <input type="number" id="reservaPersonas" class="venue-form-input" placeholder="Ej: 4"
                                 min="1" required>
+                            <span id="errPersonas" class="form-error-msg"
+                                style="display: none; color: var(--magenta); font-size: 0.85rem; margin-top: 0.5rem;"></span>
                         </div>
                         <div class="venue-form-group">
                             <label class="venue-form-label" for="reservaFecha">Fecha</label>
                             <input type="date" id="reservaFecha" class="venue-form-input" required>
+                            <span id="errFecha" class="form-error-msg"
+                                style="display: none; color: var(--magenta); font-size: 0.85rem; margin-top: 0.5rem;"></span>
                         </div>
                         <button type="submit" class="btn-modal-reservar">
                             <i data-lucide="send"></i>
-                            Reservar vía WhatsApp
+                            <span data-i18n="modal_reservar">Reservar vía WhatsApp</span>
                         </button>
                     </form>
                 </div>
@@ -500,6 +506,229 @@
     </footer>
 
     <script>
+        const translations = {
+            ENG: {
+                nav_venues: "Venues",
+                nav_experience: "Experience",
+                nav_events: "Events",
+                nav_music: "Music",
+                nav_location: "Location",
+                book_now: "BOOK NOW",
+                book_table: "BOOK YOUR TABLE",
+                hero_title: "NO RULES,<br>NO FILTERS",
+                hero_subtitle: "La Capital del Perreo",
+                our_venues: "Our Venues",
+                venue_flagship: "Flagship",
+                venue_coastal: "Coastal",
+                venue_luxury: "GDL/Luxury",
+                venue_urban: "GDL/Urban",
+                venue_qro: "Queretaro",
+                venue_new_spots: "New Spots",
+                coming_soon: "COMING<br>SOON",
+                the_experience: "The Experience",
+                experience_pure_mischief: "PURE MISCHIEF",
+                experience_mischief_desc: "No rules. No filters. Just the raw energy of the night.",
+                experience_fire_music: "FIRE MUSIC",
+                experience_fire_music_desc: "The hottest reggaetón selection on the planet. Elite DJs only.",
+                experience_best_perreo: "THE BEST PERREO",
+                experience_best_perreo_desc: "This is the capital. Get down to the floor or get out of the way.",
+                experience_vibe_check: "VIBE CHECK",
+                experience_vibe_check_desc: "Exclusive energy for the most intense crowd in Mexico.",
+                upcoming_events: "UPCOMING EVENTS",
+                feel_the_beat: "FEEL THE BEAT",
+                location_title: "Where the party at 🔥",
+                footer_tagline: "The Capital of Perreo. No rules. No filters.",
+                footer_quick_links: "Quick Links",
+                footer_mandalatickets: "MANDALATICKETS",
+                footer_schedule: "Schedule & Dresscode",
+                footer_gallery: "Photo Gallery",
+                footer_privacy: "Privacy Policy",
+                footer_terms: "Terms & Conditions",
+                footer_faqs: "Faqs",
+                footer_contact: "Contact Us",
+                footer_copy: "&copy; 2026 Rakata. All rights reserved.",
+                modal_booking: "Booking",
+                modal_back: "Back",
+                modal_form_title: "Reservation Request",
+                modal_nombre: "Name",
+                modal_nombre_ph: "Your full name",
+                modal_personas: "Number of guests",
+                modal_personas_ph: "e.g. 4",
+                modal_fecha: "Date",
+                modal_reservar: "Reserve via WhatsApp",
+                modal_wa_msg: "Hello, I would like to make a reservation at Rakata {venue}.\nName: {name}\nGuests: {guests}\nDate: {date}",
+                err_req_name: "Please enter your name.",
+                err_req_guests: "Please enter the number of guests.",
+                err_num_guests: "Input a valid number.",
+                err_req_date: "Please select a date."
+            },
+            ESP: {
+                nav_venues: "Venues",
+                nav_experience: "Experiencia",
+                nav_events: "Eventos",
+                nav_music: "Música",
+                nav_location: "Ubicación",
+                book_now: "RESERVA YA",
+                book_table: "RESERVA TU MESA",
+                hero_title: "SIN REGLAS,<br>SIN FILTROS",
+                hero_subtitle: "La Capital del Perreo",
+                our_venues: "Nuestros Venues",
+                venue_flagship: "Flagship",
+                venue_coastal: "Costa",
+                venue_luxury: "GDL/Lujo",
+                venue_urban: "GDL/Urbano",
+                venue_qro: "Querétaro",
+                venue_new_spots: "Nuevos Spots",
+                coming_soon: "PRÓXIMA-<br>MENTE",
+                the_experience: "La Experiencia",
+                experience_pure_mischief: "PURA MALICIA",
+                experience_mischief_desc: "Sin reglas. Sin filtros. Solo la energía pura de la noche.",
+                experience_fire_music: "MÚSICA QUE ARDE",
+                experience_fire_music_desc: "La selección de reggaetón más hot del planeta. Solo DJs de élite.",
+                experience_best_perreo: "EL MEJOR PERREO",
+                experience_best_perreo_desc: "Esta es la capital. Al suelo o fuera del camino.",
+                experience_vibe_check: "VIBE CHECK",
+                experience_vibe_check_desc: "Energía exclusiva para el público más intenso de México.",
+                upcoming_events: "PRÓXIMOS EVENTOS",
+                feel_the_beat: "SIENTE EL BEAT",
+                location_title: "Donde está la fiesta 🔥",
+                footer_tagline: "La Capital del Perreo. Sin reglas. Sin filtros.",
+                footer_quick_links: "Links Rápidos",
+                footer_mandalatickets: "MANDALATICKETS",
+                footer_schedule: "Horarios y Dresscode",
+                footer_gallery: "Galería de Fotos",
+                footer_privacy: "Aviso de Privacidad",
+                footer_terms: "Términos y Condiciones",
+                footer_faqs: "Faqs",
+                footer_contact: "Contáctanos",
+                footer_copy: "&copy; 2026 Rakata. Todos los derechos reservados.",
+                modal_booking: "Reservar",
+                modal_back: "Volver",
+                modal_form_title: "Solicitud de Reserva",
+                modal_nombre: "Nombre",
+                modal_nombre_ph: "Tu nombre completo",
+                modal_personas: "Número de personas",
+                modal_personas_ph: "Ej: 4",
+                modal_fecha: "Fecha",
+                modal_reservar: "Reservar vía WhatsApp",
+                modal_wa_msg: "Hola, quisiera hacer una reserva en Rakata {venue}.\nNombre: {name}\nPersonas: {guests}\nFecha: {date}",
+                err_req_name: "Ingresa tu nombre.",
+                err_req_guests: "Ingresa el número de personas.",
+                err_num_guests: "Ingresa un número válido.",
+                err_req_date: "Selecciona una fecha."
+            },
+            PR: {
+                nav_venues: "Venues",
+                nav_experience: "Experiência",
+                nav_events: "Eventos",
+                nav_music: "Música",
+                nav_location: "Localização",
+                book_now: "RESERVE AGORA",
+                book_table: "RESERVE SUA MESA",
+                hero_title: "SEM REGRAS,<br>SEM FILTROS",
+                hero_subtitle: "La Capital del Perreo",
+                our_venues: "Nossos Venues",
+                venue_flagship: "Flagship",
+                venue_coastal: "Costa",
+                venue_luxury: "GDL/Luxo",
+                venue_urban: "GDL/Urbano",
+                venue_qro: "Querétaro",
+                venue_new_spots: "Novos Spots",
+                coming_soon: "EM BREVE",
+                the_experience: "A Experiência",
+                experience_pure_mischief: "PURA MALÍCIA",
+                experience_mischief_desc: "Sem regras. Sem filtros. Apenas a energia pura da noite.",
+                experience_fire_music: "MÚSICA DE FOGO",
+                experience_fire_music_desc: "A seleção de reggaetón mais quente do planeta. Apenas DJs de elite.",
+                experience_best_perreo: "O MELHOR PERREO",
+                experience_best_perreo_desc: "Esta é a capital. Desça até o chão ou saia do caminho.",
+                experience_vibe_check: "VIBE CHECK",
+                experience_vibe_check_desc: "Energía exclusiva para o público mais intenso do México.",
+                upcoming_events: "PRÓXIMOS EVENTOS",
+                feel_the_beat: "SINTA O BEAT",
+                location_title: "Onde está a festa 🔥",
+                footer_tagline: "A Capital do Perreo. Sem regras. Sem filtros.",
+                footer_quick_links: "Links Rápidos",
+                footer_mandalatickets: "MANDALATICKETS",
+                footer_schedule: "Horários e Dresscode",
+                footer_gallery: "Galeria de Fotos",
+                footer_privacy: "Política de Privacidade",
+                footer_terms: "Termos e Condições",
+                footer_faqs: "Faqs",
+                footer_contact: "Contate-nos",
+                footer_copy: "&copy; 2026 Rakata. Todos os direitos reservados.",
+                modal_booking: "Reservar",
+                modal_back: "Voltar",
+                modal_form_title: "Solicitação de Reserva",
+                modal_nombre: "Nome",
+                modal_nombre_ph: "Seu nome completo",
+                modal_personas: "Número de pessoas",
+                modal_personas_ph: "Ex: 4",
+                modal_fecha: "Data",
+                modal_reservar: "Reservar via WhatsApp",
+                modal_wa_msg: "Olá, gostaria de fazer uma reserva no Rakata {venue}.\nNome: {name}\nPessoas: {guests}\nData: {date}",
+                err_req_name: "Insira seu nome.",
+                err_req_guests: "Insira o número de pessoas.",
+                err_num_guests: "Insira um número válido.",
+                err_req_date: "Selecione uma data."
+            },
+            FR: {
+                nav_venues: "Venues",
+                nav_experience: "Expérience",
+                nav_events: "Événements",
+                nav_music: "Musique",
+                nav_location: "Emplacement",
+                book_now: "RÉSERVEZ MAINTENANT",
+                book_table: "RÉSERVEZ VOTRE TABLE",
+                hero_title: "PAS DE RÈGLES,<br>PAS DE FILTRE",
+                hero_subtitle: "La Capital del Perreo",
+                our_venues: "Nos Venues",
+                venue_flagship: "Flagship",
+                venue_coastal: "Littoral",
+                venue_luxury: "GDL/Luxe",
+                venue_urban: "GDL/Urbain",
+                venue_qro: "Quartier",
+                venue_new_spots: "Nouveaux Spots",
+                coming_soon: "PROCHAINEMENT",
+                the_experience: "L'Expérience",
+                experience_pure_mischief: "PURE MALICE",
+                experience_mischief_desc: "Pas de règles. Pas de filtres. Juste l'énergie brute de la nuit.",
+                experience_fire_music: "MUSIQUE DE FEU",
+                experience_fire_music_desc: "La sélection de reggaetón la plus chaude de la planète. DJs d'élite uniquement.",
+                experience_best_perreo: "LE MEILLEUR PERREO",
+                experience_best_perreo_desc: "C'est la capitale. Descendez au sol ou écartez-vous.",
+                experience_vibe_check: "VIBE CHECK",
+                experience_vibe_check_desc: "Énergie exclusive pour la foule la plus intense du Mexique.",
+                upcoming_events: "ÉVÉNEMENTS À VENIR",
+                feel_the_beat: "RESSENTEZ LE RYTHME",
+                location_title: "Où est la fête 🔥",
+                footer_tagline: "La Capitale du Perreo. Pas de règles. Pas de filtres.",
+                footer_quick_links: "Liens Rapides",
+                footer_mandalatickets: "MANDALATICKETS",
+                footer_schedule: "Horaires et Dresscode",
+                footer_gallery: "Galerie Photos",
+                footer_privacy: "Politique de Confidentialité",
+                footer_terms: "Termes et Conditions",
+                footer_faqs: "Faqs",
+                footer_contact: "Contactez-nous",
+                footer_copy: "&copy; 2026 Rakata. Tous droits réservés.",
+                modal_booking: "Réserver",
+                modal_back: "Retour",
+                modal_form_title: "Demande de Réservation",
+                modal_nombre: "Nom",
+                modal_nombre_ph: "Votre nom complet",
+                modal_personas: "Nombre de personnes",
+                modal_personas_ph: "Ex: 4",
+                modal_fecha: "Date",
+                modal_reservar: "Réserver via WhatsApp",
+                modal_wa_msg: "Bonjour, je souhaite faire une réservation à Rakata {venue}.\nNom: {name}\nPersonnes: {guests}\nDate: {date}",
+                err_req_name: "Veuillez entrer votre nom.",
+                err_req_guests: "Veuillez entrer le nombre de personnes.",
+                err_num_guests: "Entrez un numéro valide.",
+                err_req_date: "Veuillez sélectionner une date."
+            }
+        };
+
         // Initialize Lucide icons
         lucide.createIcons();
 
@@ -590,212 +819,6 @@
 
             // Handle Language Switch
             const langOptions = document.querySelectorAll('.lang-option');
-            const translations = {
-                ENG: {
-                    nav_venues: "Venues",
-                    nav_experience: "Experience",
-                    nav_events: "Events",
-                    nav_music: "Music",
-                    nav_location: "Location",
-                    book_now: "BOOK NOW",
-                    book_table: "BOOK YOUR TABLE",
-                    hero_title: "NO RULES,<br>NO FILTERS",
-                    hero_subtitle: "La Capital del Perreo",
-                    our_venues: "Our Venues",
-                    venue_flagship: "Flagship",
-                    venue_coastal: "Coastal",
-                    venue_luxury: "GDL/Luxury",
-                    venue_urban: "GDL/Urban",
-                    venue_qro: "Queretaro",
-                    venue_new_spots: "New Spots",
-                    coming_soon: "COMING<br>SOON",
-                    the_experience: "The Experience",
-                    experience_pure_mischief: "PURE MISCHIEF",
-                    experience_mischief_desc: "No rules. No filters. Just the raw energy of the night.",
-                    experience_fire_music: "FIRE MUSIC",
-                    experience_fire_music_desc: "The hottest reggaetón selection on the planet. Elite DJs only.",
-                    experience_best_perreo: "THE BEST PERREO",
-                    experience_best_perreo_desc: "This is the capital. Get down to the floor or get out of the way.",
-                    experience_vibe_check: "VIBE CHECK",
-                    experience_vibe_check_desc: "Exclusive energy for the most intense crowd in Mexico.",
-                    upcoming_events: "UPCOMING EVENTS",
-                    feel_the_beat: "FEEL THE BEAT",
-                    location_title: "Where the party at 🔥",
-                    footer_tagline: "The Capital of Perreo. No rules. No filters.",
-                    footer_quick_links: "Quick Links",
-                    footer_mandalatickets: "MANDALATICKETS",
-                    footer_schedule: "Schedule & Dresscode",
-                    footer_gallery: "Photo Gallery",
-                    footer_privacy: "Privacy Policy",
-                    footer_terms: "Terms & Conditions",
-                    footer_faqs: "Faqs",
-                    footer_contact: "Contact Us",
-                    footer_copy: "&copy; 2026 Rakata. All rights reserved.",
-                    modal_booking: "Booking",
-                    modal_back: "Back",
-                    modal_form_title: "Reservation Request",
-                    modal_nombre: "Name",
-                    modal_nombre_ph: "Your full name",
-                    modal_personas: "Number of guests",
-                    modal_personas_ph: "e.g. 4",
-                    modal_fecha: "Date",
-                    modal_reservar: "Reserve via WhatsApp",
-                    modal_wa_msg: "Hello, I would like to make a reservation at Rakata {venue}.\nName: {name}\nGuests: {guests}\nDate: {date}"
-                },
-                ESP: {
-                    nav_venues: "Venues",
-                    nav_experience: "Experiencia",
-                    nav_events: "Eventos",
-                    nav_music: "Música",
-                    nav_location: "Ubicación",
-                    book_now: "RESERVA YA",
-                    book_table: "RESERVA TU MESA",
-                    hero_title: "SIN REGLAS,<br>SIN FILTROS",
-                    hero_subtitle: "La Capital del Perreo",
-                    our_venues: "Nuestros Venues",
-                    venue_flagship: "Flagship",
-                    venue_coastal: "Costa",
-                    venue_luxury: "GDL/Lujo",
-                    venue_urban: "GDL/Urbano",
-                    venue_qro: "Querétaro",
-                    venue_new_spots: "Nuevos Spots",
-                    coming_soon: "PRÓXIMA-<br>MENTE",
-                    the_experience: "La Experiencia",
-                    experience_pure_mischief: "PURA MALICIA",
-                    experience_mischief_desc: "Sin reglas. Sin filtros. Solo la energía pura de la noche.",
-                    experience_fire_music: "MÚSICA QUE ARDE",
-                    experience_fire_music_desc: "La selección de reggaetón más hot del planeta. Solo DJs de élite.",
-                    experience_best_perreo: "EL MEJOR PERREO",
-                    experience_best_perreo_desc: "Esta es la capital. Al suelo o fuera del camino.",
-                    experience_vibe_check: "VIBE CHECK",
-                    experience_vibe_check_desc: "Energía exclusiva para el público más intenso de México.",
-                    upcoming_events: "PRÓXIMOS EVENTOS",
-                    feel_the_beat: "SIENTE EL BEAT",
-                    location_title: "Donde está la fiesta 🔥",
-                    footer_tagline: "La Capital del Perreo. Sin reglas. Sin filtros.",
-                    footer_quick_links: "Links Rápidos",
-                    footer_mandalatickets: "MANDALATICKETS",
-                    footer_schedule: "Horarios y Dresscode",
-                    footer_gallery: "Galería de Fotos",
-                    footer_privacy: "Aviso de Privacidad",
-                    footer_terms: "Términos y Condiciones",
-                    footer_faqs: "Faqs",
-                    footer_contact: "Contáctanos",
-                    footer_copy: "&copy; 2026 Rakata. Todos los derechos reservados.",
-                    modal_booking: "Reservar",
-                    modal_back: "Volver",
-                    modal_form_title: "Solicitud de Reserva",
-                    modal_nombre: "Nombre",
-                    modal_nombre_ph: "Tu nombre completo",
-                    modal_personas: "Número de personas",
-                    modal_personas_ph: "Ej: 4",
-                    modal_fecha: "Fecha",
-                    modal_reservar: "Reservar vía WhatsApp",
-                    modal_wa_msg: "Hola, quisiera hacer una reserva en Rakata {venue}.\nNombre: {name}\nPersonas: {guests}\nFecha: {date}"
-                },
-                PR: {
-                    nav_venues: "Venues",
-                    nav_experience: "Experiência",
-                    nav_events: "Eventos",
-                    nav_music: "Música",
-                    nav_location: "Localização",
-                    book_now: "RESERVE AGORA",
-                    book_table: "RESERVE SUA MESA",
-                    hero_title: "SEM REGRAS,<br>SEM FILTROS",
-                    hero_subtitle: "La Capital del Perreo",
-                    our_venues: "Nossos Venues",
-                    venue_flagship: "Flagship",
-                    venue_coastal: "Costa",
-                    venue_luxury: "GDL/Luxo",
-                    venue_urban: "GDL/Urbano",
-                    venue_qro: "Querétaro",
-                    venue_new_spots: "Novos Spots",
-                    coming_soon: "EM BREVE",
-                    the_experience: "A Experiência",
-                    experience_pure_mischief: "PURA MALÍCIA",
-                    experience_mischief_desc: "Sem regras. Sem filtros. Apenas a energia pura da noite.",
-                    experience_fire_music: "MÚSICA DE FOGO",
-                    experience_fire_music_desc: "A seleção de reggaetón mais quente do planeta. Apenas DJs de elite.",
-                    experience_best_perreo: "O MELHOR PERREO",
-                    experience_best_perreo_desc: "Esta é a capital. Desça até o chão ou saia do caminho.",
-                    experience_vibe_check: "VIBE CHECK",
-                    experience_vibe_check_desc: "Energía exclusiva para o público mais intenso do México.",
-                    upcoming_events: "PRÓXIMOS EVENTOS",
-                    feel_the_beat: "SINTA O BEAT",
-                    location_title: "Onde está a festa 🔥",
-                    footer_tagline: "A Capital do Perreo. Sem regras. Sem filtros.",
-                    footer_quick_links: "Links Rápidos",
-                    footer_mandalatickets: "MANDALATICKETS",
-                    footer_schedule: "Horários e Dresscode",
-                    footer_gallery: "Galeria de Fotos",
-                    footer_privacy: "Política de Privacidade",
-                    footer_terms: "Termos e Condições",
-                    footer_faqs: "Faqs",
-                    footer_contact: "Contate-nos",
-                    footer_copy: "&copy; 2026 Rakata. Todos os direitos reservados.",
-                    modal_booking: "Reservar",
-                    modal_back: "Voltar",
-                    modal_form_title: "Solicitação de Reserva",
-                    modal_nombre: "Nome",
-                    modal_nombre_ph: "Seu nome completo",
-                    modal_personas: "Número de pessoas",
-                    modal_personas_ph: "Ex: 4",
-                    modal_fecha: "Data",
-                    modal_reservar: "Reservar via WhatsApp",
-                    modal_wa_msg: "Olá, gostaria de fazer uma reserva no Rakata {venue}.\nNome: {name}\nPessoas: {guests}\nData: {date}"
-                },
-                FR: {
-                    nav_venues: "Venues",
-                    nav_experience: "Expérience",
-                    nav_events: "Événements",
-                    nav_music: "Musique",
-                    nav_location: "Emplacement",
-                    book_now: "RÉSERVEZ MAINTENANT",
-                    book_table: "RÉSERVEZ VOTRE TABLE",
-                    hero_title: "PAS DE RÈGLES,<br>PAS DE FILTRE",
-                    hero_subtitle: "La Capital del Perreo",
-                    our_venues: "Nos Venues",
-                    venue_flagship: "Flagship",
-                    venue_coastal: "Littoral",
-                    venue_luxury: "GDL/Luxe",
-                    venue_urban: "GDL/Urbain",
-                    venue_qro: "Quartier",
-                    venue_new_spots: "Nouveaux Spots",
-                    coming_soon: "PROCHAINEMENT",
-                    the_experience: "L'Expérience",
-                    experience_pure_mischief: "PURE MALICE",
-                    experience_mischief_desc: "Pas de règles. Pas de filtres. Juste l'énergie brute de la nuit.",
-                    experience_fire_music: "MUSIQUE DE FEU",
-                    experience_fire_music_desc: "La sélection de reggaetón la plus chaude de la planète. DJs d'élite uniquement.",
-                    experience_best_perreo: "LE MEILLEUR PERREO",
-                    experience_best_perreo_desc: "C'est la capitale. Descendez au sol ou écartez-vous.",
-                    experience_vibe_check: "VIBE CHECK",
-                    experience_vibe_check_desc: "Énergie exclusive pour la foule la plus intense du Mexique.",
-                    upcoming_events: "ÉVÉNEMENTS À VENIR",
-                    feel_the_beat: "RESSENTEZ LE RYTHME",
-                    location_title: "Où est la fête 🔥",
-                    footer_tagline: "La Capitale du Perreo. Pas de règles. Pas de filtres.",
-                    footer_quick_links: "Liens Rapides",
-                    footer_mandalatickets: "MANDALATICKETS",
-                    footer_schedule: "Horaires et Dresscode",
-                    footer_gallery: "Galerie Photos",
-                    footer_privacy: "Politique de Confidentialité",
-                    footer_terms: "Termes et Conditions",
-                    footer_faqs: "Faqs",
-                    footer_contact: "Contactez-nous",
-                    footer_copy: "&copy; 2026 Rakata. Tous droits réservés.",
-                    modal_booking: "Réserver",
-                    modal_back: "Retour",
-                    modal_form_title: "Demande de Réservation",
-                    modal_nombre: "Nom",
-                    modal_nombre_ph: "Votre nom complet",
-                    modal_personas: "Nombre de personnes",
-                    modal_personas_ph: "Ex: 4",
-                    modal_fecha: "Date",
-                    modal_reservar: "Réserver via WhatsApp",
-                    modal_wa_msg: "Bonjour, je souhaite faire une réservation à Rakata {venue}.\nNom: {name}\nPersonnes: {guests}\nDate: {date}"
-                }
-            };
 
             function updateLanguage(lang) {
                 const currentLangSpan = document.getElementById('currentLang');
@@ -1117,14 +1140,47 @@
                 const personas = document.getElementById('reservaPersonas').value.trim();
                 const fecha = document.getElementById('reservaFecha').value;
 
-                if (!nombre || !personas || !fecha) return;
+                const errNombreSpan = document.getElementById('errNombre');
+                const errPersonasSpan = document.getElementById('errPersonas');
+                const errFechaSpan = document.getElementById('errFecha');
+
+                errNombreSpan.style.display = 'none';
+                errPersonasSpan.style.display = 'none';
+                errFechaSpan.style.display = 'none';
+
+                let valid = true;
+                const lang = window._rakataLang || 'ESP';
+                const t = translations[lang] || translations['ESP'];
+
+                if (!nombre) {
+                    errNombreSpan.textContent = t.err_req_name;
+                    errNombreSpan.style.display = 'block';
+                    valid = false;
+                }
+
+                if (!personas) {
+                    errPersonasSpan.textContent = t.err_req_guests;
+                    errPersonasSpan.style.display = 'block';
+                    valid = false;
+                } else if (isNaN(personas) || Number(personas) < 1) {
+                    errPersonasSpan.textContent = t.err_num_guests;
+                    errPersonasSpan.style.display = 'block';
+                    valid = false;
+                }
+
+                if (!fecha) {
+                    errFechaSpan.textContent = t.err_req_date;
+                    errFechaSpan.style.display = 'block';
+                    valid = false;
+                }
+
+                if (!valid) return;
 
                 // Format date as DD/MM/YYYY for readability
                 const [y, m, d] = fecha.split('-');
                 const fechaLeg = `${d}/${m}/${y}`;
 
                 // Use the active language's message template
-                const lang = window._rakataLang || 'ESP';
                 const template = (translations[lang] && translations[lang]['modal_wa_msg'])
                     || `Hola, quisiera hacer una reserva en Rakata {venue}.\nNombre: {name}\nPersonas: {guests}\nFecha: {date}`;
 
