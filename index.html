@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rakata | No Rules, No Filters</title>
-    <link rel="stylesheet" href="index.css?v=1.3">
+    <link rel="stylesheet" href="index.css?v=1.4">
     <style>
         @media (max-width: 640px) {
 
@@ -46,7 +46,7 @@
                         </a>
                         <button class="btn-modal-book" id="venueModalBook">
                             <i data-lucide="calendar-check"></i>
-                            Booking
+                            <span data-i18n="modal_booking">Booking</span>
                         </button>
                     </div>
                 </div>
@@ -423,25 +423,18 @@
                 </div>
             </div>
 
-            <!-- Search / Filter Container -->
-            <div class="location-search-container"
-                style="margin-top: 3rem; position: relative; max-width: 400px; margin-left: auto; margin-right: auto;">
-                <div class="search-bar-wrapper brutalist-border-green"
-                    style="background: var(--void); display: flex; align-items: center; padding: 0.5rem 1rem;">
-                    <i data-lucide="search"
-                        style="color: var(--neon-green); margin-right: 0.5rem; width: 20px; height: 20px;"></i>
-                    <input type="text" id="venueSearch" value="CANCUN" readonly
-                        style="background: transparent; border: none; color: var(--white); font-family: var(--font-main); font-weight: 800; text-transform: uppercase; width: 100%; outline: none; cursor: pointer;">
-                </div>
-
-                <!-- Dropdown Menu -->
-                <div id="venueDropdown" class="venue-dropdown brutalist-border-magenta">
-                    <div class="dropdown-item">CANCUN</div>
-                    <div class="dropdown-item">PUERTO VALLARTA</div>
-                    <div class="dropdown-item">ACUEDUCTO-GDL</div>
-                    <div class="dropdown-item">CHAPU-GDL</div>
-                    <div class="dropdown-item">QUERETARO</div>
-                </div>
+            <!-- Venue Selector Buttons -->
+            <div class="location-venue-btns" id="venueButtons">
+                <button class="btn-venue-loc is-active" data-map="https://snazzymaps.com/embed/777321"
+                    data-label="Cancun">Cancun</button>
+                <button class="btn-venue-loc" data-map="https://snazzymaps.com/embed/777322"
+                    data-label="Vallarta">Vallarta</button>
+                <button class="btn-venue-loc" data-map="https://snazzymaps.com/embed/777325"
+                    data-label="Andares">Andares</button>
+                <button class="btn-venue-loc" data-map="https://snazzymaps.com/embed/777324"
+                    data-label="Chapu">Chapu</button>
+                <button class="btn-venue-loc" data-map="https://snazzymaps.com/embed/777326"
+                    data-label="QRO">QRO</button>
             </div>
 
             <!-- Map Embed -->
@@ -637,7 +630,17 @@
                     footer_terms: "Terms & Conditions",
                     footer_faqs: "Faqs",
                     footer_contact: "Contact Us",
-                    footer_copy: "&copy; 2026 Rakata. All rights reserved."
+                    footer_copy: "&copy; 2026 Rakata. All rights reserved.",
+                    modal_booking: "Booking",
+                    modal_back: "Back",
+                    modal_form_title: "Reservation Request",
+                    modal_nombre: "Name",
+                    modal_nombre_ph: "Your full name",
+                    modal_personas: "Number of guests",
+                    modal_personas_ph: "e.g. 4",
+                    modal_fecha: "Date",
+                    modal_reservar: "Reserve via WhatsApp",
+                    modal_wa_msg: "Hello, I would like to make a reservation at Rakata {venue}.\nName: {name}\nGuests: {guests}\nDate: {date}"
                 },
                 ESP: {
                     nav_venues: "Venues",
@@ -678,7 +681,17 @@
                     footer_terms: "Términos y Condiciones",
                     footer_faqs: "Faqs",
                     footer_contact: "Contáctanos",
-                    footer_copy: "&copy; 2026 Rakata. Todos los derechos reservados."
+                    footer_copy: "&copy; 2026 Rakata. Todos los derechos reservados.",
+                    modal_booking: "Reservar",
+                    modal_back: "Volver",
+                    modal_form_title: "Solicitud de Reserva",
+                    modal_nombre: "Nombre",
+                    modal_nombre_ph: "Tu nombre completo",
+                    modal_personas: "Número de personas",
+                    modal_personas_ph: "Ej: 4",
+                    modal_fecha: "Fecha",
+                    modal_reservar: "Reservar vía WhatsApp",
+                    modal_wa_msg: "Hola, quisiera hacer una reserva en Rakata {venue}.\nNombre: {name}\nPersonas: {guests}\nFecha: {date}"
                 },
                 PR: {
                     nav_venues: "Venues",
@@ -719,7 +732,17 @@
                     footer_terms: "Termos e Condições",
                     footer_faqs: "Faqs",
                     footer_contact: "Contate-nos",
-                    footer_copy: "&copy; 2026 Rakata. Todos os direitos reservados."
+                    footer_copy: "&copy; 2026 Rakata. Todos os direitos reservados.",
+                    modal_booking: "Reservar",
+                    modal_back: "Voltar",
+                    modal_form_title: "Solicitação de Reserva",
+                    modal_nombre: "Nome",
+                    modal_nombre_ph: "Seu nome completo",
+                    modal_personas: "Número de pessoas",
+                    modal_personas_ph: "Ex: 4",
+                    modal_fecha: "Data",
+                    modal_reservar: "Reservar via WhatsApp",
+                    modal_wa_msg: "Olá, gostaria de fazer uma reserva no Rakata {venue}.\nNome: {name}\nPessoas: {guests}\nData: {date}"
                 },
                 FR: {
                     nav_venues: "Venues",
@@ -760,7 +783,17 @@
                     footer_terms: "Termes et Conditions",
                     footer_faqs: "Faqs",
                     footer_contact: "Contactez-nous",
-                    footer_copy: "&copy; 2026 Rakata. Tous droits réservés."
+                    footer_copy: "&copy; 2026 Rakata. Tous droits réservés.",
+                    modal_booking: "Réserver",
+                    modal_back: "Retour",
+                    modal_form_title: "Demande de Réservation",
+                    modal_nombre: "Nom",
+                    modal_nombre_ph: "Votre nom complet",
+                    modal_personas: "Nombre de personnes",
+                    modal_personas_ph: "Ex: 4",
+                    modal_fecha: "Date",
+                    modal_reservar: "Réserver via WhatsApp",
+                    modal_wa_msg: "Bonjour, je souhaite faire une réservation à Rakata {venue}.\nNom: {name}\nPersonnes: {guests}\nDate: {date}"
                 }
             };
 
@@ -774,7 +807,21 @@
                         el.innerHTML = translations[lang][key];
                     }
                 });
+
+                // Handle input placeholders
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                    const key = el.getAttribute('data-i18n-placeholder');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.placeholder = translations[lang][key];
+                    }
+                });
+
+                // Store active language for dynamic uses (e.g. WhatsApp message)
+                window._rakataLang = lang;
             }
+
+            // Expose globally so modal and other scopes can re-apply language
+            window._applyLang = lang => updateLanguage(lang);
 
             langOptions.forEach(opt => {
                 opt.addEventListener('click', () => {
@@ -925,46 +972,18 @@
         }
 
         function initLocationSearch() {
-            const venueSearch = document.getElementById('venueSearch');
-            const venueDropdown = document.getElementById('venueDropdown');
-            const dropdownItems = document.querySelectorAll('.dropdown-item');
             const venueMap = document.getElementById('venueMap');
+            const venueBtns = document.querySelectorAll('.btn-venue-loc');
 
-            // Map mapping
-            const mapLinks = {
-                "CANCUN": "https://snazzymaps.com/embed/777321",
-                "PUERTO VALLARTA": "https://snazzymaps.com/embed/777322",
-                "ACUEDUCTO-GDL": "https://snazzymaps.com/embed/777325",
-                "CHAPU-GDL": "https://snazzymaps.com/embed/777324",
-                "QUERETARO": "https://snazzymaps.com/embed/777326"
-            };
-
-            if (venueSearch && venueDropdown) {
-                venueSearch.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const isVisible = venueDropdown.style.display === 'block';
-                    venueDropdown.style.display = isVisible ? 'none' : 'block';
+            venueBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Deactivate all, activate clicked
+                    venueBtns.forEach(b => b.classList.remove('is-active'));
+                    btn.classList.add('is-active');
+                    // Swap map
+                    venueMap.src = btn.dataset.map;
                 });
-
-                document.addEventListener('click', (e) => {
-                    if (!venueSearch.contains(e.target) && !venueDropdown.contains(e.target)) {
-                        venueDropdown.style.display = 'none';
-                    }
-                });
-
-                dropdownItems.forEach(item => {
-                    item.addEventListener('click', () => {
-                        const selection = item.textContent;
-                        venueSearch.value = selection;
-                        venueDropdown.style.display = 'none';
-
-                        // Actualizar mapa
-                        if (mapLinks[selection]) {
-                            venueMap.src = mapLinks[selection];
-                        }
-                    });
-                });
-            }
+            });
         }
 
         window.addEventListener('resize', handleResize);
@@ -998,6 +1017,39 @@
             let currentWhatsapp = ''; // holds the phone number while form is open
             let currentVenueName = '';
 
+            // Mini translation map for modal-specific strings
+            const modalT = {
+                ENG: { back: "Back", title: "Reservation Request", nombre: "Name", personas: "Number of guests", fecha: "Date", reservar: "Reserve via WhatsApp", booking: "Booking", nombre_ph: "Your full name", personas_ph: "e.g. 4" },
+                ESP: { back: "Volver", title: "Solicitud de Reserva", nombre: "Nombre", personas: "Número de personas", fecha: "Fecha", reservar: "Reservar vía WhatsApp", booking: "Reservar", nombre_ph: "Tu nombre completo", personas_ph: "Ej: 4" },
+                PR: { back: "Voltar", title: "Solicitação de Reserva", nombre: "Nome", personas: "Número de pessoas", fecha: "Data", reservar: "Reservar via WhatsApp", booking: "Reservar", nombre_ph: "Seu nome completo", personas_ph: "Ex: 4" },
+                FR: { back: "Retour", title: "Demande de Réservation", nombre: "Nom", personas: "Nombre de personnes", fecha: "Date", reservar: "Réserver via WhatsApp", booking: "Réserver", nombre_ph: "Votre nom complet", personas_ph: "Ex: 4" }
+            };
+
+            function applyModalLang() {
+                const lang = (window._rakataLang && modalT[window._rakataLang]) ? window._rakataLang : 'ESP';
+                const t = modalT[lang];
+                // Panel 2 text
+                const backSpan = document.querySelector('#venueFormBack span[data-i18n]') || document.querySelector('#venueFormBack');
+                const titleEl = document.querySelector('.venue-form-title');
+                const lblName = document.querySelector('label[for="reservaNombre"]');
+                const inpName = document.getElementById('reservaNombre');
+                const lblPers = document.querySelector('label[for="reservaPersonas"]');
+                const inpPers = document.getElementById('reservaPersonas');
+                const lblDate = document.querySelector('label[for="reservaFecha"]');
+                const submitSpan = document.querySelector('.btn-modal-reservar span[data-i18n]') || document.querySelector('.btn-modal-reservar');
+                const bookSpan = document.querySelector('#venueModalBook span[data-i18n]') || document.querySelector('#venueModalBook');
+
+                if (backSpan) backSpan.textContent = t.back;
+                if (titleEl) titleEl.textContent = t.title;
+                if (lblName) lblName.textContent = t.nombre;
+                if (inpName) inpName.placeholder = t.nombre_ph;
+                if (lblPers) lblPers.textContent = t.personas;
+                if (inpPers) inpPers.placeholder = t.personas_ph;
+                if (lblDate) lblDate.textContent = t.fecha;
+                if (submitSpan) submitSpan.textContent = t.reservar;
+                if (bookSpan) bookSpan.textContent = t.booking;
+            }
+
             // ---- Panel helpers ----
             function showPanel1() {
                 panel1.style.display = '';
@@ -1009,6 +1061,7 @@
                 // Clear form on each open
                 form.reset();
                 lucide.createIcons();
+                applyModalLang();
             }
 
             // ---- Open/Close ----
@@ -1044,6 +1097,7 @@
 
                 showPanel1();
                 lucide.createIcons();
+                applyModalLang();
 
                 overlay.classList.add('is-open');
                 overlay.setAttribute('aria-hidden', 'false');
@@ -1069,10 +1123,16 @@
                 const [y, m, d] = fecha.split('-');
                 const fechaLeg = `${d}/${m}/${y}`;
 
-                const msg = `Hola, quisiera hacer una reserva en Rakata ${currentVenueName}.\n` +
-                    `Nombre: ${nombre}\n` +
-                    `Personas: ${personas}\n` +
-                    `Fecha: ${fechaLeg}`;
+                // Use the active language's message template
+                const lang = window._rakataLang || 'ESP';
+                const template = (translations[lang] && translations[lang]['modal_wa_msg'])
+                    || `Hola, quisiera hacer una reserva en Rakata {venue}.\nNombre: {name}\nPersonas: {guests}\nFecha: {date}`;
+
+                const msg = template
+                    .replace('{venue}', currentVenueName)
+                    .replace('{name}', nombre)
+                    .replace('{guests}', personas)
+                    .replace('{date}', fechaLeg);
 
                 const waUrl = `https://wa.me/${currentWhatsapp}?text=${encodeURIComponent(msg)}`;
                 window.open(waUrl, '_blank');

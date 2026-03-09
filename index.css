@@ -1280,6 +1280,63 @@ body {
 }
 
 /* =========================================
+   LOCATION VENUE SELECTOR BUTTONS
+   ========================================= */
+.location-venue-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.btn-venue-loc {
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 3px solid var(--white);
+  cursor: pointer;
+  transition: all 0.2s steps(2);
+  box-shadow: 4px 4px 0 transparent;
+}
+
+.btn-venue-loc:hover {
+  border-color: var(--magenta);
+  color: var(--magenta);
+  box-shadow: 4px 4px 0 var(--magenta);
+  transform: translate(-2px, -2px);
+}
+
+.btn-venue-loc.is-active {
+  background: var(--magenta);
+  color: var(--white);
+  border-color: var(--white);
+  box-shadow: 5px 5px 0 var(--neon-green);
+  transform: translate(-2px, -2px);
+}
+
+.btn-venue-loc.is-active:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 var(--neon-green);
+}
+
+@media (max-width: 640px) {
+  .location-venue-btns {
+    gap: 0.75rem;
+  }
+
+  .btn-venue-loc {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* =========================================
    VENUE RESERVATION FORM (Panel 2)
    ========================================= */
 .venue-form-body {
