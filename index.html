@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rakata | No Rules, No Filters</title>
-    <link rel="stylesheet" href="index.css?v=1.2">
+    <link rel="stylesheet" href="index.css?v=1.3">
     <style>
         @media (max-width: 640px) {
 
@@ -22,6 +22,72 @@
 
 <body>
     <div class="bg-grain"></div>
+
+    <!-- Venue Modal -->
+    <div class="venue-modal-overlay" id="venueModal" aria-hidden="true">
+        <div class="venue-modal" role="dialog" aria-modal="true">
+            <button class="venue-modal-close" id="venueModalClose" aria-label="Close">
+                <i data-lucide="x"></i>
+            </button>
+
+            <!-- Panel 1: Venue Info -->
+            <div id="venueModalPanel1">
+                <div class="venue-modal-img-wrap">
+                    <img src="" alt="" id="venueModalImg" class="venue-modal-img">
+                    <div class="venue-modal-img-overlay"></div>
+                </div>
+                <div class="venue-modal-body">
+                    <span class="venue-modal-tag" id="venueModalTag"></span>
+                    <h2 class="venue-modal-name" id="venueModalName"></h2>
+                    <div class="venue-modal-actions">
+                        <a href="#" id="venueModalInstagram" target="_blank" class="btn-modal-ig">
+                            <i data-lucide="instagram"></i>
+                            Instagram
+                        </a>
+                        <button class="btn-modal-book" id="venueModalBook">
+                            <i data-lucide="calendar-check"></i>
+                            Booking
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 2: Reservation Form (WhatsApp venues) -->
+            <div id="venueModalPanel2" style="display:none;">
+                <div class="venue-modal-body venue-form-body">
+                    <button class="venue-form-back" id="venueFormBack">
+                        <i data-lucide="arrow-left"></i>
+                        Volver
+                    </button>
+                    <div class="tilted-wrapper"
+                        style="background-color: var(--magenta); transform: rotate(-1deg); margin-bottom: 2rem;">
+                        <h3 class="venue-form-title">Solicitud de Reserva</h3>
+                    </div>
+                    <form id="venueReservaForm" class="venue-form" novalidate>
+                        <div class="venue-form-group">
+                            <label class="venue-form-label" for="reservaNombre">Nombre</label>
+                            <input type="text" id="reservaNombre" class="venue-form-input"
+                                placeholder="Tu nombre completo" required>
+                        </div>
+                        <div class="venue-form-group">
+                            <label class="venue-form-label" for="reservaPersonas">Número de personas</label>
+                            <input type="number" id="reservaPersonas" class="venue-form-input" placeholder="Ej: 4"
+                                min="1" required>
+                        </div>
+                        <div class="venue-form-group">
+                            <label class="venue-form-label" for="reservaFecha">Fecha</label>
+                            <input type="date" id="reservaFecha" class="venue-form-input" required>
+                        </div>
+                        <button type="submit" class="btn-modal-reservar">
+                            <i data-lucide="send"></i>
+                            Reservar vía WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!-- Mobile Navigation Panel -->
     <div class="mobile-nav-overlay" id="mobileOverlay" style="display: none;"></div>
@@ -51,8 +117,8 @@
         </div>
 
         <div class="mobile-nav-footer">
-            <a href="https://mandalatickets.com/" class="btn-book-rakata"
-                style="width: 100%; text-align: center; display: block;" data-i18n="book_now">BOOK NOW</a>
+            <a href="#venues" class="btn-book-rakata" style="width: 100%; text-align: center; display: block;"
+                data-i18n="book_now">BOOK NOW</a>
         </div>
     </div>
 
@@ -79,7 +145,7 @@
 
             <!-- Right Actions -->
             <div style="display: flex; align-items: center; gap: 1rem;">
-                <a href="https://mandalatickets.com/" class="btn-book-rakata is-nav" data-i18n="book_now">BOOK NOW</a>
+                <a href="#venues" class="btn-book-rakata is-nav" data-i18n="book_now">BOOK NOW</a>
 
                 <!-- Language Selector -->
                 <div class="lang-selector-container">
@@ -124,7 +190,7 @@
             </div>
 
             <div style="margin-top: 3rem;">
-                <a href="https://mandalatickets.com/" class="btn-book-rakata" data-i18n="book_table">BOOK YOUR TABLE</a>
+                <a href="#venues" class="btn-book-rakata" data-i18n="book_table">BOOK YOUR TABLE</a>
             </div>
         </div>
     </header>
@@ -138,49 +204,61 @@
 
             <div class="venue-grid">
                 <!-- Cancun -->
-                <a href="https://www.instagram.com/rakatacancun/" class="venue-card span-3">
+                <button class="venue-card span-3" data-venue-name="Cancun" data-venue-tag-i18n="venue_flagship"
+                    data-venue-tag="Flagship" data-venue-img="img/venue_cancun.png"
+                    data-venue-ig="https://www.instagram.com/rakatacancun/"
+                    data-venue-booking="https://mandalatickets.com/es/cancun/disco/rakata">
                     <img src="img/venue_cancun.png" alt="Rakata Cancun" class="venue-img">
                     <div class="venue-info">
                         <span class="venue-city" data-i18n="venue_flagship">Flagship</span>
                         <h3 class="venue-name">Cancun</h3>
                     </div>
-                </a>
+                </button>
 
                 <!-- Vallarta -->
-                <a href="https://www.instagram.com/rakatavallarta/" class="venue-card span-1">
+                <button class="venue-card span-1" data-venue-name="Vallarta" data-venue-tag-i18n="venue_coastal"
+                    data-venue-tag="Coastal" data-venue-img="img/venue_vallarta.png"
+                    data-venue-ig="https://www.instagram.com/rakatavallarta/"
+                    data-venue-booking="https://mandalatickets.com/es/vallarta/disco/rakata">
                     <img src="img/venue_vallarta.png" alt="Rakata Vallarta" class="venue-img">
                     <div class="venue-info">
                         <span class="venue-city" data-i18n="venue_coastal">Coastal</span>
                         <h3 class="venue-name">Vallarta</h3>
                     </div>
-                </a>
+                </button>
 
                 <!-- GDL Acueducto -->
-                <a href="https://www.instagram.com/rakata.gdl/?hl=en" class="venue-card span-1">
+                <button class="venue-card span-1" data-venue-name="Andares" data-venue-tag-i18n="venue_luxury"
+                    data-venue-tag="GDL/Luxury" data-venue-img="img/venue_andares.png"
+                    data-venue-ig="https://www.instagram.com/rakata.gdl/?hl=en" data-venue-whatsapp="523335709191">
                     <img src="img/venue_andares.png" alt="Rakata GDL Acueducto" class="venue-img">
                     <div class="venue-info">
                         <span class="venue-city" data-i18n="venue_luxury">GDL/Luxury</span>
                         <h3 class="venue-name">Andares</h3>
                     </div>
-                </a>
+                </button>
 
                 <!-- GDL Chapu -->
-                <a href="https://www.instagram.com/rakatachapu/?hl=en" class="venue-card span-1">
+                <button class="venue-card span-1" data-venue-name="Chapu" data-venue-tag-i18n="venue_urban"
+                    data-venue-tag="GDL/Urban" data-venue-img="img/venue_chapu.png"
+                    data-venue-ig="https://www.instagram.com/rakatachapu/?hl=en" data-venue-whatsapp="523330048776">
                     <img src="img/venue_chapu.png" alt="Rakata GDL Chapu" class="venue-img">
                     <div class="venue-info">
                         <span class="venue-city" data-i18n="venue_urban">GDL/Urban</span>
                         <h3 class="venue-name">Chapu</h3>
                     </div>
-                </a>
+                </button>
 
                 <!-- Queretaro -->
-                <a href="https://www.instagram.com/rakataqueretaro/?hl=en" class="venue-card span-1">
+                <button class="venue-card span-1" data-venue-name="QRO" data-venue-tag-i18n="venue_qro"
+                    data-venue-tag="Queretaro" data-venue-img="img/venue_queretaro.png"
+                    data-venue-ig="https://www.instagram.com/rakataqueretaro/?hl=en" data-venue-whatsapp="524421802273">
                     <img src="img/venue_queretaro.png" alt="Rakata QRO" class="venue-img">
                     <div class="venue-info">
                         <span class="venue-city" data-i18n="venue_qro">Queretaro</span>
                         <h3 class="venue-name">QRO</h3>
                     </div>
-                </a>
+                </button>
 
                 <!-- Coming Soon -->
                 <div class="venue-card span-1"
@@ -901,6 +979,121 @@
             // Initialize the controlled wiggle on the title with lower intensity
             initWiggle('.twitch-text', { freq: 0.75, amp: 1.5, fps: 10 });
         });
+        // ============================================================
+        //  VENUE MODAL LOGIC
+        // ============================================================
+        (function () {
+            const overlay = document.getElementById('venueModal');
+            const closeBtn = document.getElementById('venueModalClose');
+            const panel1 = document.getElementById('venueModalPanel1');
+            const panel2 = document.getElementById('venueModalPanel2');
+            const modalImg = document.getElementById('venueModalImg');
+            const modalTag = document.getElementById('venueModalTag');
+            const modalName = document.getElementById('venueModalName');
+            const modalIg = document.getElementById('venueModalInstagram');
+            const bookBtn = document.getElementById('venueModalBook');
+            const backBtn = document.getElementById('venueFormBack');
+            const form = document.getElementById('venueReservaForm');
+
+            let currentWhatsapp = ''; // holds the phone number while form is open
+            let currentVenueName = '';
+
+            // ---- Panel helpers ----
+            function showPanel1() {
+                panel1.style.display = '';
+                panel2.style.display = 'none';
+            }
+            function showPanel2() {
+                panel1.style.display = 'none';
+                panel2.style.display = '';
+                // Clear form on each open
+                form.reset();
+                lucide.createIcons();
+            }
+
+            // ---- Open/Close ----
+            function openModal(card) {
+                const name = card.dataset.venueName || '';
+                const tag = card.dataset.venueTag || '';
+                const img = card.dataset.venueImg || '';
+                const ig = card.dataset.venueIg || '#';
+                const booking = card.dataset.venueBooking || '';
+                const wa = card.dataset.venueWhatsapp || '';
+
+                currentVenueName = name;
+                currentWhatsapp = wa;
+
+                // Populate info panel
+                modalImg.src = img;
+                modalImg.alt = name;
+                modalTag.textContent = tag;
+                modalName.textContent = name;
+                modalIg.href = ig;
+
+                // Booking button — always visible, behavior differs
+                bookBtn.style.display = '';
+                if (booking) {
+                    // Mandala Tickets: open external link
+                    bookBtn.onclick = () => window.open(booking, '_blank');
+                } else if (wa) {
+                    // WhatsApp venue: switch to reservation form
+                    bookBtn.onclick = () => showPanel2();
+                } else {
+                    bookBtn.style.display = 'none'; // truly no booking option
+                }
+
+                showPanel1();
+                lucide.createIcons();
+
+                overlay.classList.add('is-open');
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                overlay.classList.remove('is-open');
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            // ---- Form submit → WhatsApp ----
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nombre = document.getElementById('reservaNombre').value.trim();
+                const personas = document.getElementById('reservaPersonas').value.trim();
+                const fecha = document.getElementById('reservaFecha').value;
+
+                if (!nombre || !personas || !fecha) return;
+
+                // Format date as DD/MM/YYYY for readability
+                const [y, m, d] = fecha.split('-');
+                const fechaLeg = `${d}/${m}/${y}`;
+
+                const msg = `Hola, quisiera hacer una reserva en Rakata ${currentVenueName}.\n` +
+                    `Nombre: ${nombre}\n` +
+                    `Personas: ${personas}\n` +
+                    `Fecha: ${fechaLeg}`;
+
+                const waUrl = `https://wa.me/${currentWhatsapp}?text=${encodeURIComponent(msg)}`;
+                window.open(waUrl, '_blank');
+            });
+
+            // ---- Event listeners ----
+            document.querySelectorAll('.venue-card[data-venue-name]').forEach(card => {
+                card.addEventListener('click', () => openModal(card));
+            });
+
+            backBtn.addEventListener('click', showPanel1);
+
+            closeBtn.addEventListener('click', closeModal);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+        })();
+
     </script>
 </body>
 
