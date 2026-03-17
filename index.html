@@ -309,7 +309,7 @@
                 </div>
                 <div class="experience-card">
                     <div class="experience-emoji">🔥</div>
-                    <h3 class="text-rebel" data-i18n="experience_fire_music">FIRE MUSIC</h3>
+                    <h3 class="text-rebel" data-i18n="experience_fire_music">La mejor música</h3>
                     <p data-i18n="experience_fire_music_desc">The hottest reggaetón selection on the planet. Elite DJs
                         only.</p>
                 </div>
@@ -371,22 +371,42 @@
             <!-- Venue Selector Buttons -->
             <div class="location-venue-btns" id="venueButtons">
                 <button class="btn-venue-loc is-active" data-map="https://snazzymaps.com/embed/777321"
-                    data-label="Cancun">Cancun</button>
+                    data-label="Cancun" data-venue-name="Rakata Cancun"
+                    data-address="Blvd. Kukulkan Km 9.5, Punta Cancun, Zona Hotelera, 77500 Cancún, Q.R.">Cancun</button>
                 <button class="btn-venue-loc" data-map="https://snazzymaps.com/embed/777322"
-                    data-label="Vallarta">Vallarta</button>
+                    data-label="Vallarta" data-venue-name="Rakata Vallarta"
+                    data-address="Paseo Díaz Ordaz, Centro, 48300 Puerto Vallarta, Jal.">Vallarta</button>
                 <button class="btn-venue-loc" data-map="https://snazzymaps.com/embed/777325"
-                    data-label="Andares">Andares</button>
+                    data-label="Andares" data-venue-name="Rakata Andares"
+                    data-address="Blvd. Real de Acueducto 360-A, Royal Country, 45116 Zapopan, Jal.">Andares</button>
                 <button class="btn-venue-loc" data-map="https://snazzymaps.com/embed/777324"
-                    data-label="Chapu">Chapu</button>
+                    data-label="Chapu" data-venue-name="Rakata Chapu"
+                    data-address="Av. Chapultepec Sur, Col. Americana, 44160 Guadalajara, Jal.">Chapu</button>
                 <button class="btn-venue-loc" data-map="https://snazzymaps.com/embed/777326"
-                    data-label="QRO">QRO</button>
+                    data-label="QRO" data-venue-name="Rakata Querétaro"
+                    data-address="Ciprés 462, Jurica, 76127 Santiago de Querétaro, Qro.">QRO</button>
             </div>
 
-            <!-- Map Embed -->
-            <div
-                style="margin-top: 4rem; border: 4px solid var(--white); box-shadow: 15px 15px 0 var(--magenta); line-height: 0;">
-                <iframe id="venueMap" src="https://snazzymaps.com/embed/777321" width="100%" height="600px"
-                    style="border:none;"></iframe>
+            <!-- Map + Venue Card -->
+            <div class="map-venue-wrap" style="margin-top: 4rem;">
+                <div class="map-frame" style="border: 4px solid var(--white); box-shadow: 15px 15px 0 var(--magenta); line-height: 0;">
+                    <iframe id="venueMap" src="https://snazzymaps.com/embed/777321" width="100%" height="600px"
+                        style="border:none;"></iframe>
+                </div>
+                <aside class="venue-loc-card" id="venueLocCard" aria-live="polite">
+                    <div class="venue-loc-card-body">
+                        <h3 class="venue-loc-name" id="venueLocName">Rakata Cancun</h3>
+                        <p class="venue-loc-address" id="venueLocAddress">Blvd. Kukulkan Km 9.5, Punta Cancun, Zona Hotelera, 77500 Cancún, Q.R.</p>
+                    </div>
+                    <div class="venue-loc-actions">
+                        <a href="#" id="venueLocOpenMap" target="_blank" rel="noopener noreferrer" class="venue-loc-btn venue-loc-btn-map" aria-label="Abrir mapa en nueva pestaña">
+                            <svg viewBox="0 -960 960 960" aria-hidden="true"><path fill="currentColor" d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120zm188-212-56-56 372-372H560v-80h280v280h-80v-144z"></path></svg>
+                        </a>
+                        <a href="#" id="venueLocDirections" target="_blank" rel="noopener noreferrer" class="venue-loc-btn venue-loc-btn-directions" aria-label="Cómo llegar">
+                            <svg viewBox="0 0 15 15" aria-hidden="true"><path fill="currentColor" d="M6.97.22a.747.747 0 011.057 0l6.75 6.75c.292.3.292.772 0 1.057l-6.75 6.75a.747.747 0 01-1.058 0L.22 8.027a.747.747 0 010-1.058zm2.025 5.782h-3.75a.75.75 0 00-.75.75v3h1.5v-2.25h3v1.875l2.625-2.625-2.625-2.625z"></path></svg>
+                        </a>
+                    </div>
+                </aside>
             </div>
         </section>
     </main>
@@ -467,7 +487,7 @@
                 the_experience: "The Experience",
                 experience_pure_mischief: "PURE MISCHIEF",
                 experience_mischief_desc: "No rules. No filters. Just the raw energy of the night.",
-                experience_fire_music: "FIRE MUSIC",
+                experience_fire_music: "The best music",
                 experience_fire_music_desc: "The hottest reggaetón selection on the planet. Elite DJs only.",
                 experience_best_perreo: "THE BEST PERREO",
                 experience_best_perreo_desc: "This is the capital. Get down to the floor or get out of the way.",
@@ -522,7 +542,7 @@
                 the_experience: "La Experiencia",
                 experience_pure_mischief: "PURA MALICIA",
                 experience_mischief_desc: "Sin reglas. Sin filtros. Solo la energía pura de la noche.",
-                experience_fire_music: "MÚSICA QUE ARDE",
+                experience_fire_music: "La mejor música",
                 experience_fire_music_desc: "La selección de reggaetón más hot del planeta. Solo DJs de élite.",
                 experience_best_perreo: "EL MEJOR PERREO",
                 experience_best_perreo_desc: "Esta es la capital. Al suelo o fuera del camino.",
@@ -577,7 +597,7 @@
                 the_experience: "A Experiência",
                 experience_pure_mischief: "PURA MALÍCIA",
                 experience_mischief_desc: "Sem regras. Sem filtros. Apenas a energia pura da noite.",
-                experience_fire_music: "MÚSICA DE FOGO",
+                experience_fire_music: "A melhor música",
                 experience_fire_music_desc: "A seleção de reggaetón mais quente do planeta. Apenas DJs de elite.",
                 experience_best_perreo: "O MELHOR PERREO",
                 experience_best_perreo_desc: "Esta é a capital. Desça até o chão ou saia do caminho.",
@@ -632,7 +652,7 @@
                 the_experience: "L'Expérience",
                 experience_pure_mischief: "PURE MALICE",
                 experience_mischief_desc: "Pas de règles. Pas de filtres. Juste l'énergie brute de la nuit.",
-                experience_fire_music: "MUSIQUE DE FEU",
+                experience_fire_music: "La meilleure musique",
                 experience_fire_music_desc: "La sélection de reggaetón la plus chaude de la planète. DJs d'élite uniquement.",
                 experience_best_perreo: "LE MEILLEUR PERREO",
                 experience_best_perreo_desc: "C'est la capitale. Descendez au sol ou écartez-vous.",
@@ -936,16 +956,32 @@
         function initLocationSearch() {
             const venueMap = document.getElementById('venueMap');
             const venueBtns = document.querySelectorAll('.btn-venue-loc');
+            const cardName = document.getElementById('venueLocName');
+            const cardAddress = document.getElementById('venueLocAddress');
+            const linkOpenMap = document.getElementById('venueLocOpenMap');
+            const linkDirections = document.getElementById('venueLocDirections');
+
+            function updateVenueCard(btn) {
+                const name = btn.dataset.venueName || '';
+                const address = btn.dataset.address || '';
+                cardName.textContent = name;
+                cardAddress.textContent = address;
+                const query = encodeURIComponent(address);
+                linkOpenMap.href = 'https://www.google.com/maps/search/?api=1&query=' + query;
+                linkDirections.href = 'https://www.google.com/maps/dir/?api=1&destination=' + query;
+            }
 
             venueBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // Deactivate all, activate clicked
                     venueBtns.forEach(b => b.classList.remove('is-active'));
                     btn.classList.add('is-active');
-                    // Swap map
                     venueMap.src = btn.dataset.map;
+                    updateVenueCard(btn);
                 });
             });
+            // Inicializar card con el venue activo (Cancun)
+            const activeBtn = document.querySelector('.btn-venue-loc.is-active');
+            if (activeBtn) updateVenueCard(activeBtn);
         }
 
         window.addEventListener('resize', handleResize);
