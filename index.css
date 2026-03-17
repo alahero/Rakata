@@ -683,6 +683,12 @@ body {
   border-color: var(--white) !important;
 }
 
+/* Venues section: neon border + conservar el rectángulo offset al hover */
+#venues .venue-card.neon-card-glow:hover {
+  box-shadow: 8px 8px 0 var(--magenta), 0 0 20px var(--neon-color, var(--neon-green)), 0 0 40px var(--neon-color, var(--neon-green)) !important;
+  border-color: var(--neon-color, var(--neon-green)) !important;
+}
+
 .neon-text-green {
   color: var(--neon-green) !important;
   text-shadow: 0 0 8px var(--neon-green), 0 0 15px var(--neon-green);
