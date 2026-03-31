@@ -2,6 +2,12 @@
 <html lang="es">
 
 <head>
+    <!--
+      Analítica: GTM + GA4 (ambos activos en esta página)
+      - Tag Manager: GTM-MT2S4PZH → otras etiquetas (Meta, eventos, etc.) desde tagmanager.google.com
+      - Analytics 4: G-NRJEVXT7R5 → gtag.js abajo (medición base)
+      Regla: en GTM NO publiques etiqueta "Configuración GA4" con G-NRJEVXT7R5 o duplicarás page_view.
+    -->
     <!-- GTM: script principal (contenedor GTM-MT2S4PZH) -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
@@ -10,6 +16,14 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-MT2S4PZH');</script>
     <!-- Fin GTM (head) -->
+    <!-- GA4: Google tag (gtag.js), ID de medición G-NRJEVXT7R5 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NRJEVXT7R5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NRJEVXT7R5');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rakata | La Capital del Perreo - No Rules, No Filters</title>
